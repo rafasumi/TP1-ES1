@@ -6,6 +6,9 @@ Como features essenciais do sistema, podemos destacar:
 - CRUD de álbuns e artistas
 - Postagem de avaliações e comentários em álbuns
 - Visualização de estatísticas de avaliações de diferentes álbuns e artistas
+
+Pensamos em algumas features interessantes caso houvesse tempo extra no fim do desenvolvimento:
+- Funcionalidade de login simples, para que mais de uma pessoa possa avaliar um mesmo álbum, com a exibição da média das avaliações recebidas ao fim
 ## Membros da equipe
 | Nome    | Matrícula  | Papel    |
 |---------|------------|----------|
