@@ -1,0 +1,28 @@
+{
+  "name": "tp1-es1",
+  "version": "1.0.0",
+  "description": "O objetivo principal do sistema desenvolvido para este trabalho prático é permitir o cadastro e a avaliação de álbuns musicais, de forma semelhante a sites como o [Rate Your Music](https://rateyourmusic.com).",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafasumi/TP1-ES1.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafasumi/TP1-ES1/issues"
+  },
+  "homepage": "https://github.com/rafasumi/TP1-ES1#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "sequelize": "^6.22.0",
+    "sqlite3": "^5.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
