@@ -8,7 +8,7 @@ const Album = sequelize.define('Albums', {
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
-    }
+    },
 
     name: {
         type: DataTypes.STRING,
@@ -24,15 +24,6 @@ const Album = sequelize.define('Albums', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-
-    // artistId: {
-    //     type: DataTypes.INTEGER,
-    //     foreignKey: true,
-    //     references: {
-    //         model: 'Artist',
-    //         key: 'id'
-    //     }
-    // },
 });
 
 Artist.hasMany(Album, {

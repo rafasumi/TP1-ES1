@@ -7,7 +7,7 @@ const Artist = sequelize.define('Artists', {
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
-    }
+    },
 
     name: {
         type: DataTypes.STRING,

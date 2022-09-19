@@ -8,7 +8,7 @@ const Rating = sequelize.define('Ratings', {
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
-    }
+    },
 
     value: {
         type: DataTypes.INTEGER,
@@ -23,6 +23,7 @@ const Rating = sequelize.define('Ratings', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true
     },
 });
 
