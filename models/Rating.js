@@ -23,7 +23,7 @@ const Rating = sequelize.define('Ratings', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
     },
 });
 
