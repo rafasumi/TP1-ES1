@@ -9,6 +9,9 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+const artistRouter = require('./controllers/artistController');
+app.use('/artist', artistRouter);
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
