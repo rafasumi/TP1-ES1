@@ -23,10 +23,12 @@ const Album = sequelize.define('Albums', {
   },
 });
 
-Artist.hasMany(Album, {
-  foreignKey: 'artistId',
-});
+Artist.hasMany(Album);
 Album.belongsTo(Artist);
+
+Artist.sync({alter: false, force: false})
+  .then(() => console.log('A tabela Artists foi (re)criada'))
+  .catch((error) => console.log(error));
 
 Album.sync({alter: false, force: false})
   .then(() => console.log('A tabela Albums foi (re)criada'))

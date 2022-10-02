@@ -24,12 +24,10 @@ const Rating = sequelize.define('Ratings', {
   },
 });
 
-Album.hasMany(Rating, {
-  foreignKey: 'albumId',
-});
+Album.hasMany(Rating);
 Rating.belongsTo(Album);
 
-Album.sync({alter: false, force: false})
+Rating.sync({alter: false, force: false})
   .then(() => console.log('A tabela Ratings foi (re)criada'))
   .catch((error) => console.log(error));
 

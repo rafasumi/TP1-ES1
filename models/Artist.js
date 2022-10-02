@@ -26,8 +26,4 @@ const Artist = sequelize.define('Artists', {
   },
 });
 
-Artist.sync({alter: false, force: false})
-  .then(() => console.log('A tabela Artists foi (re)criada'))
-  .catch((error) => console.log(error));
-
 module.exports = Artist;

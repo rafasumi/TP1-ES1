@@ -12,6 +12,12 @@ app.get('/', (req, res) => {
 const artistRouter = require('./controllers/artistController');
 app.use('/artist', artistRouter);
 
+const albumRouter = require('./controllers/albumController');
+app.use('/album', albumRouter);
+
+const ratingRouter = require('./controllers/ratingController');
+app.use('/rating', ratingRouter);
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
