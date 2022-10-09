@@ -3,11 +3,280 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="/css/cover.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Esteban&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    
     <title>Index</title>
   </head>
-  <body>
-    <h1>Hello World</h1>
+
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">rate.io</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 h-100">
+            <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-8 align-self-end">
+                    <h1 class="text-white font-weight-bold">O Maior Site para Críticas e Avaliações de Álbuns</h1>
+                    <hr class="divider border-0" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 mb-5">Comece agora a avaliar para suas músicas e artistas favoritos (ou mais odiados)! Compartilhe suas opiniões com o mundo e veja o que outras pessoas acharam!</p>
+                    <a class="btn btn-primary btn-xl border-0" href="#sobre">Saiba Mais</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- About-->
+    <section class="page-section bg-about" id="sobre">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="text-white mt-0">Quem Somos?</h2>
+                    <hr class="divider divider-light border-0" />
+                    <p class="text-white-75 mb-4">Nosso site é um lugar para avaliar a artistas e músicas de todo lugar! Se a música ou o artista ainda não estão na plataforma, sinta-se livre para adicioná-lo!</p>
+                    <a class="btn btn-light btn-xl" href="#services">Quero Começar!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview Músicas-->
+    <section class="page-section" id="musicas">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Músicas do Momento</h2>
+            <hr class="musica-divider border-0" />
+            <div class="row gx-4 gx-lg-5 mx-1">
+              <div class="mx-2 card" style="width: 18rem;">
+                <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg" class="card-img-top pt-4 pb-2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Nome da Música</h5>
+                  <div class="row g-2 mb-3 align-items-center">
+                    <div class="col-auto">
+                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                    </div>
+                    <div class="col-auto rating" id="inputRating">
+                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    </div>
+                  </div>
+                  <div class="rating">
+                    
+                  </div>
+                  <a href="#" class="btn btn-secondary border-0">Ver detalhes</a>
+                </div>
+              </div>
+              <div class="mx-2 card" style="width: 18rem;">
+                <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg" class="card-img-top pt-4 pb-2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Nome da Música</h5>
+                  <div class="row g-2 mb-3 align-items-center">
+                    <div class="col-auto">
+                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                    </div>
+                    <div class="col-auto rating" id="inputRating">
+                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    </div>
+                  </div>
+                  <div class="rating">
+                    
+                  </div>
+                  <a href="#" class="btn btn-secondary border-0">Ver detalhes</a>
+                </div>
+              </div>
+              <div class="mx-2 card" style="width: 18rem;">
+                <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg" class="card-img-top pt-4 pb-2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Nome da Música</h5>
+                  <div class="row g-2 mb-3 align-items-center">
+                    <div class="col-auto">
+                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                    </div>
+                    <div class="col-auto rating" id="inputRating">
+                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    </div>
+                  </div>
+                  <div class="rating">
+                    
+                  </div>
+                  <a href="#" class="btn btn-secondary border-0">Ver detalhes</a>
+                </div>
+              </div>
+              <div class="mx-2 card" style="width: 18rem;">
+                <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg" class="card-img-top pt-4 pb-2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Nome da Música</h5>
+                  <div class="row g-2 mb-3 align-items-center">
+                    <div class="col-auto">
+                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                    </div>
+                    <div class="col-auto rating" id="inputRating">
+                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    </div>
+                  </div>
+                  <div class="rating">
+                    
+                  </div>
+                  <a href="#" class="btn btn-secondary border-0">Ver detalhes</a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider div-transparent div-arrow-down"></div>
+    
+    <!-- Preview Artistas-->
+    <section class="page-section" id="artistas">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Artistas do Momento</h2>
+            <hr class="artista-divider border-0" />
+            <div class="row gx-4 gx-lg-5 mx-1">
+              <div class="mx-2 card" style="width: 18rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" class="card-img-top pt-4 pb-2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Nome do Artista</h5>
+                  <div class="row g-2 mb-3 align-items-center">
+                    <div class="col-auto">
+                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                    </div>
+                    <div class="col-auto rating" id="inputRating">
+                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    </div>
+                  </div>
+                  <div class="rating">
+                    
+                  </div>
+                  <a href="#" class="btn btn-success border-0">Ver detalhes</a>
+                </div>
+              </div>
+              <div class="mx-2 card" style="width: 18rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" class="card-img-top pt-4 pb-2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Nome do Artista</h5>
+                  <div class="row g-2 mb-3 align-items-center">
+                    <div class="col-auto">
+                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                    </div>
+                    <div class="col-auto rating" id="inputRating">
+                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    </div>
+                  </div>
+                  <div class="rating">
+                    
+                  </div>
+                  <a href="#" class="btn btn-success border-0">Ver detalhes</a>
+                </div>
+              </div>
+              <div class="mx-2 card" style="width: 18rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" class="card-img-top pt-4 pb-2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Nome do Artista</h5>
+                  <div class="row g-2 mb-3 align-items-center">
+                    <div class="col-auto">
+                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                    </div>
+                    <div class="col-auto rating" id="inputRating">
+                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    </div>
+                  </div>
+                  <div class="rating">
+                    
+                  </div>
+                  <a href="#" class="btn btn-success border-0">Ver detalhes</a>
+                </div>
+              </div>
+              <div class="mx-2 card" style="width: 18rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" class="card-img-top pt-4 pb-2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Nome do Artista</h5>
+                  <div class="row g-2 mb-3 align-items-center">
+                    <div class="col-auto">
+                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                    </div>
+                    <div class="col-auto rating" id="inputRating">
+                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    </div>
+                  </div>
+                  <div class="rating">
+                    
+                  </div>
+                  <a href="#" class="btn btn-success border-0">Ver detalhes</a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="bg-light py-5">
+        <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - Company Name</div></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SimpleLightbox plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
   </body>
 </html>
