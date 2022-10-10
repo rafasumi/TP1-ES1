@@ -1,7 +1,15 @@
 const Album = require('../models/Album');
+const Artist = require('../models/Artist');
 const router = require('express').Router();
 
-router.post('/createAlbum',
+router.get('/create',
+  async (req, res) => {
+    const artists = await Artist.findAll();
+    res.render('createAlbum', {artists});
+  },
+);
+
+router.post('/',
   async (req, res) => {
     const album = {
       name: req.body.name,
@@ -15,14 +23,14 @@ router.post('/createAlbum',
   },
 );
 
-router.get('/getAlbums',
+router.get('/',
   async (req, res) => {
     const albums = await Album.findAll();
-    res.status(200).json(albums);
+    res.render('viewAlbum', {albums});
   },
 );
 
-router.put('/updateAlbum/:id',
+router.put('/:id',
   async (req, res) => {
     const album = await Album.findByPk(req.params.id);
     await album.update(req.body);
@@ -30,7 +38,7 @@ router.put('/updateAlbum/:id',
   },
 );
 
-router.delete('/deleteAlbum/:id',
+router.delete('/:id',
   async (req, res) => {
     const album = await Album.findByPk(req.params.id);
     await album.destroy();
