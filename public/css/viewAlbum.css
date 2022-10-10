@@ -5,9 +5,22 @@
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
 */
 
+.link {
+  color: #F77F00;
+  text-decoration: none; 
+}
+
+.link:hover {
+  color: #D62828;
+}
+
 .card-body{
   text-align: left !important;
 }
+
+.btn-secondary:hover {
+    background-color: #D62828 !important;
+  }
 
 .album-divider {
   height: 0.2rem;
@@ -15,18 +28,6 @@
   margin: 1.5rem auto;
   background-color: #F77F00;
   opacity: 1;
-}
-
-.artista-divider {
-  height: 0.2rem;
-  max-width: 3.25rem;
-  margin: 1.5rem auto;
-  background-color: #FCBF49;
-  opacity: 1;
-}
-
-.bg-about {
-  background-color: #003049 !important;
 }
 
 .divider
@@ -154,40 +155,6 @@ hr.divider-light {
   }
   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
     color: #f4623a;
-  }
-}
-
-header.masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
-  background: url("https://i.ibb.co/8s2CFnt/fundo.png");
-  /* background: url("https://i.ibb.co/hHyVZvN/fundo2.png"); */
-  /* background: url("https://i.ibb.co/rsBcNB4/fundo2.png"); */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
-header.masthead h1, header.masthead .h1 {
-  font-size: 2.25rem;
-}
-@media (min-width: 992px) {
-  header.masthead {
-    height: 100vh;
-    min-height: 40rem;
-    padding-top: 4.5rem;
-    padding-bottom: 0;
-  }
-  header.masthead p {
-    font-size: 1.15rem;
-  }
-  header.masthead h1, header.masthead .h1 {
-    font-size: 3rem;
-  }
-}
-@media (min-width: 1200px) {
-  header.masthead h1, header.masthead .h1 {
-    font-size: 3.5rem;
   }
 }
 
