@@ -27,6 +27,9 @@
 }
 
 #mainNav {
+  background-color: transparent;
+}  
+/*
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   background-color: #fff;
   transition: background-color 0.2s ease;
@@ -80,7 +83,7 @@
   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
     color: #f4623a;
   }
-}
+}*/
 
 .rating {
   display: flex;
