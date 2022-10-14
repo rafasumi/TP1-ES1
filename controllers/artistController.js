@@ -24,7 +24,7 @@ router.post('/',
 
 router.get('/:id',
   async (req, res) => {
-    const artist = await Artist.findOne({id: req.params.id});
+    const artist = await Artist.findByPk(req.params.id);
     res.render('viewArtist', {artist});
   },
 );
