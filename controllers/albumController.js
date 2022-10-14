@@ -15,11 +15,12 @@ router.post('/',
       name: req.body.name,
       year: req.body.year,
       image: req.body.image,
+      artistId: req.body.artist,
     };
 
     await Album.create(album);
 
-    res.status(201).end();
+    res.redirect('/album');
   },
 );
 

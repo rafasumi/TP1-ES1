@@ -13,26 +13,31 @@
 
   <section class="page-section" id="form">
     <div class="registration-form">
-      <form>
+      <form action="/album/" method="POST">
         <h2 class="text-center mt-0 pb-4">Cadastrar Álbum</h2>
         <div class="form-floating">
-          <input type="text" class="form-control item" id="nome" placeholder="Nome do álbum">
-          <label for="nome">Nome do álbum</label>
+          <input type="text" class="form-control item" name="name" id="name" placeholder="Nome do álbum">
+          <label for="name">Nome do álbum</label>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control item" id="artista" placeholder="Nome do artista">
-          <label for="artista">Nome do artista</label>
+          <select class="form-select item" name="artist" id="artist" required>
+            <option selected>Selecione</option>
+            <% artists.forEach(artist => { %>
+              <option value=<%= artist.id %>><%- artist.name %></option>
+            <% }) %>
+          </select>
+          <label for="artist">Nome do artista</label>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control item" id="ano" placeholder="Ano">
-          <label for="ano">Ano de lançamento</label>
+          <input type="text" class="form-control item" name="year" id="year" placeholder="Ano">
+          <label for="year">Ano de lançamento</label>
         </div>
         <div class="form-floating">
-          <input type="url" class="form-control item" id="url" placeholder="URL para imagem do álbum">
-          <label for="url">URL para imagem do álbum</label>
+          <input type="url" class="form-control item" name="image" id="image" placeholder="URL para imagem do álbum">
+          <label for="image">URL para imagem do álbum</label>
         </div>
         <div class="form-floating">
-          <button type="button" class="btn btn-secondary create-account w-100">Cadastrar</button>
+          <button type="submit" class="btn btn-secondary create-account w-100">Cadastrar</button>
         </div>
       </form>
     </div>
