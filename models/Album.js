@@ -23,8 +23,8 @@ const Album = sequelize.define('Albums', {
   },
 });
 
-Artist.hasMany(Album);
-Album.belongsTo(Artist);
+Artist.hasMany(Album, {foreignKey: 'artistId'});
+Album.belongsTo(Artist, {foreignKey: 'artistId', onDelete: 'CASCADE'});
 
 Artist.sync({alter: false, force: false})
   .then(() => console.log('A tabela Artists foi (re)criada'))
