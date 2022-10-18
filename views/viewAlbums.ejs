@@ -38,11 +38,7 @@
               <h5 class="card-title"><%- album.name %></h5>
               <h6 class="card-title my-3"><%- album.Artist.name %></h6>
               <h6 class="mb-3">Ano: <%- album.year %></h6>
-              <h6 class=""><a class="link" href="/album/<%- album.id %>"><strong>Ver avaliações</strong></a></h6>
-              <div class="collapse text-start">
-                <div class="pb-2">
-                </div>
-              </div>
+              <a type="button" class="btn btn-secondary border-0" href="/album/<%- album.id %>">Ver avaliações</a>
             </div>
           </div>
         <% }) %>
