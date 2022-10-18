@@ -38,7 +38,6 @@
 }  
 
 .rating {
-  margin-left: -1rem;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -47,7 +46,7 @@
 
 .rating > label {
   text-align: left; 
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   color: #FFD600;
   cursor: pointer;
 }
@@ -67,9 +66,38 @@
 
 .rating:hover > input:checked ~ label:before{ opacity: 0.4; }
 
+.rating-small {
+  margin-left: -1rem;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rating-small > input{ display:none;}
+
+.rating-small > label {
+  text-align: left; 
+  font-size: 1.4rem;
+  color: #FFD600;
+  cursor: pointer;
+}
+.rating-small > label::before{ 
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
+}
+.rating-small > label:hover:before,
+.rating-small > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+
+.rating-small > input:checked ~ label:before{
+  opacity:1;
+}
+
+.rating-small:hover > input:checked ~ label:before{ opacity: 0.4; }
 
 body{
-  background: linear-gradient(135deg, #EAE2B7 0%, #F77F00 100%);
+  background: linear-gradient(135deg, #FCBF49 0%, #F77F00 100%);
 	max-width: 99%;
 }
 
@@ -85,7 +113,6 @@ body{
 
 #reviews{
 	max-width: 50rem;
-	
   padding: 1rem 2rem;
 }
 
@@ -103,4 +130,38 @@ body{
 
 .img-album{
   max-width: 18rem;
+}
+
+.registration-form{
+	padding: 1rem 0;
+}
+
+.registration-form form{
+  background-color: #fff;
+  max-width: 600px;
+  margin: auto;
+  padding: 0 3rem;
+  text-align: center;
+}
+
+.registration-form .item{
+	border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.registration-form .enviar{
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  margin-top: 20px;
+}
+
+@media (max-width: 576px) {
+  .registration-form form{
+    padding: 50px 20px;
+    margin: 0 2%;
+  }
 }
