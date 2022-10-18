@@ -13,30 +13,31 @@
 <body id="page-top">
   <%- include('partials/navbar') -%>
 
+  <!-- Masthead-->
+  <header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+      <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-8 align-self-end">
+          <h2 class="">Artistas Cadastrados</h2>
+        </div>
+        <div class="col-lg-8 align-self-baseline py-4">
+          <a href="/artist/create" class="btn btn-secondary border-0">Adicionar Artista</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <section class="page-section" id="albuns">
     <div class="container px-4 px-lg-5">
-      <h2 class="text-center mt-0">Artistas Cadastrados</h2>
-      <div class="text-center py-4">
-        <a href="/artist/create" class="btn btn-secondary border-0">Adicionar Artista</a>
-      </div>
-      <hr class="album-divider border-0 mb-5" />
       <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
         <% artists.forEach(artist => { %>
           <div class="mx-2 card" style="width: 18rem;">
-            <img src=<%= artist.image %>
-              class="card-img-top mt-4 mb-2" alt="...">
+            <img src=<%= artist.image %> class="card-img-top mt-4 mb-2">
             <div class="card-body">
-              <h4 class="card-title"><%- artist.name %></h4>
-              <h6 class="card-title"><b><%- artist.musicalGender %> | <%- artist.country %></b></h6>
-              
-              <div class="container-btn my-2">
-                <p>
-                  <a class="btn btn-secondary border-0 center my-2" data-bs-toggle="collapse" href="#" role="button"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Detalhes
-                  </a>
-                </p>
-              </div>
+              <h4 class="card-title py-2"><b><%- artist.name %></b></h4>
+              <h6 class="card-title"><b>Gênero musical: </b><%- artist.musicalGender %></h6>
+              <h6 class="card-title"><b>País de origem: </b><%- artist.country %></h6>
+              <a type="button" class="btn btn-secondary border-0 center my-3" href="/artist/<%- artist.id %>">Ver artista</a>
             </div>
           </div>
         <% }) %>
