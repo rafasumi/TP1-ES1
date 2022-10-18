@@ -22,17 +22,17 @@ router.post('/',
   },
 );
 
-router.get('/:id',
+router.get('/all',
   async (req, res) => {
-    const artist = await Artist.findByPk(req.params.id);
-    res.render('viewArtist', {artist});
+    const artists = await Artist.findAll();
+    res.render('viewArtists', {artists});
   },
 );
 
-router.get('/',
+router.get('/:id',
   async (req, res) => {
-    const artists = await Artist.findAll();
-    res.status(200).json(artists);
+    const artist = await Artist.findByPk(req.params.id);
+    res.json(artist);
   },
 );
 

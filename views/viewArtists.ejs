@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <%- include('partials/stylehead') -%>
+
+  <link rel="stylesheet" href="/css/viewArtist.css">
+
+  <title>Rate.io - Artistas</title>
+</head>
+
+<body id="page-top">
+  <%- include('partials/navbar') -%>
+
+  <section class="page-section" id="albuns">
+    <div class="container px-4 px-lg-5">
+      <h2 class="text-center mt-0">Artistas Cadastrados</h2>
+      <div class="text-center py-4">
+        <a href="/artist/create" class="btn btn-secondary border-0">Adicionar Artista</a>
+      </div>
+      <hr class="album-divider border-0 mb-5" />
+      <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
+        <% artists.forEach(artist => { %>
+          <div class="mx-2 card" style="width: 18rem;">
+            <img src=<%- artist.image %>
+              class="card-img-top mt-4 mb-2" alt="...">
+            <div class="card-body">
+              <h4 class="card-title"><%- artist.name %></h4>
+              <h6 class="card-title"><b><%- artist.musicalGender %> | <%- artist.country %></b></h6>
+              
+              <div class="container-btn my-2">
+                <p>
+                  <a class="btn btn-secondary border-0 center my-2" data-bs-toggle="collapse" href="#" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Detalhes
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') -%>
+</body>
+
+</html>
