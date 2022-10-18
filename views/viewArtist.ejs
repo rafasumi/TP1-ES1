@@ -2,83 +2,230 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/artist.css">
-  <title>Artista</title>
+
+  <%- include('partials/stylehead') -%>
+
+  <link rel="stylesheet" href="/css/viewArtist.css">
+
+  <title>Rate.io - Artistas</title>
 </head>
 
-<body style='background-color: #e7e7e7'>
+<body id="page-top">
+  <%- include('partials/navbar') -%>
 
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-md">
-      <a class="navbar-brand" href="#">
-        <img src="/images/72651.png" alt="" width="30" height="24" class="d-inline-block align-text-top"
-          style="margin-right: 5%">
-        Rate.io
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item me-4">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item me-4">
-            <a class="nav-link" href="#">Artistas</a>
-          </li>
-          <li class="nav-item me-4">
-            <a class="nav-link" href="#">Álbuns</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Cadastrar
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Artista</a></li>
-              <li><a class="dropdown-item" href="#">Álbum</a></li>
-            </ul>
-          </li>
-        </ul>
+  <section class="page-section" id="albuns">
+    <div class="container px-4 px-lg-5">
+      <h2 class="text-center mt-0">Artistas Cadastrados</h2>
+      <div class="text-center py-4">
+        <a href="/artist/create" class="btn btn-secondary border-0">Adicionar Artista</a>
       </div>
-    </div>
-  </nav>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-8 col-md-4 my-3 mx-auto">
-        <div class="card rounded">
-          <img src=<%= artist.image %>  class="card-img-top img-fluid" alt="...">
+      <hr class="album-divider border-0 mb-5" />
+      <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
+        <div class="mx-2 card" style="width: 18rem;">
+          <img src=<%- artist.image %>
+            class="card-img-top mt-4 mb-2" alt="...">
           <div class="card-body">
-            <h4 class="card-title"><%- artist.name %> </h4>
+            <h4 class="card-title"><%- artist.name %></h4>
+            <h6 class="card-title"><b><%- artist.musicalGender %> | <%- artist.country %></b></h6>
+            
+            <div class="container-btn my-2">
+              <p>
+                <a class="btn btn-secondary border-0 center my-2" data-bs-toggle="collapse" href="#" role="button"
+                  aria-expanded="false" aria-controls="collapseExample">
+                  Detalhes
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-2 card" style="width: 18rem;">
+          <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg"
+            class="card-img-top pt-4 pb-2" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Nome do Álbum</h5>
+            <h6 class="card-title">Nome do Artista</h6>
+            <div class="row g-2 mb-3 align-items-center">
+              <div class="col-auto">
+                <label for="inputRating" class="col-form-label text-muted card-text">Nota:</label>
+              </div>
+              <div class="col-auto rating" id="inputRating">
+                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+              </div>
+            </div>
+            <div class="collapse" id="card-1">
+              <div class="pb-2">
+                <p class="">Ano: 2020</p>
+                <p class="">Gênero: Pop</p>
+                <p class=""><a class="link" href="#">Ver comentários</a></p>
+              </div>
+            </div>
+            <div class="container-btn">
+              <p>
+                <a class="btn btn-secondary border-0 center" data-bs-toggle="collapse" href="#card-1" role="button"
+                  aria-expanded="false" aria-controls="collapseExample">
+                  Detalhes
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-2 card" style="width: 18rem;">
+          <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg"
+            class="card-img-top pt-4 pb-2" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Nome do Álbum</h5>
+            <h6 class="card-title">Nome do Artista</h6>
+            <div class="row g-2 mb-3 align-items-center">
+              <div class="col-auto">
+                <label for="inputRating" class="col-form-label text-muted card-text">Nota:</label>
+              </div>
+              <div class="col-auto rating" id="inputRating">
+                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+              </div>
+            </div>
+            <div class="collapse" id="card-1">
+              <div class="pb-2">
+                <p class="">Ano: 2020</p>
+                <p class="">Gênero: Pop</p>
+                <p class=""><a class="link" href="#">Ver comentários</a></p>
+              </div>
+            </div>
+            <div class="container-btn">
+              <p>
+                <a class="btn btn-secondary border-0 center" data-bs-toggle="collapse" href="#card-1" role="button"
+                  aria-expanded="false" aria-controls="collapseExample">
+                  Detalhes
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-8 my-3">
-        <ul class="list-group list-group-flush rounded">
-          <li class="list-group-item"><b>Gênero:</b> <%- artist.musicalGender %> </li>
-          <li class="list-group-item"><b>País:</b> <%- artist.country %> </li>
-          <li class="list-group-item"><b>Álbuns: </b></li>
-          <li class="list-group-item">Álbum 1</li>
-          <li class="list-group-item">Álbum 2</li>
-        </ul>
+      <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
+        <div class="mx-2 card" style="width: 18rem;">
+          <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg"
+            class="card-img-top pt-4 pb-2" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Nome do Álbum</h5>
+            <h6 class="card-title">Nome do Artista</h6>
+            <div class="row g-2 mb-3 align-items-center">
+              <div class="col-auto">
+                <label for="inputRating" class="col-form-label text-muted card-text">Nota:</label>
+              </div>
+              <div class="col-auto rating" id="inputRating">
+                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+              </div>
+            </div>
+            <div class="collapse" id="card-1">
+              <div class="pb-2">
+                <p class="">Ano: 2020</p>
+                <p class="">Gênero: Pop</p>
+                <p class=""><a class="link" href="#">Ver comentários</a></p>
+              </div>
+            </div>
+            <div class="container-btn">
+              <p>
+                <a class="btn btn-secondary border-0 center" data-bs-toggle="collapse" href="#card-1" role="button"
+                  aria-expanded="false" aria-controls="collapseExample">
+                  Detalhes
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-2 card" style="width: 18rem;">
+          <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg"
+            class="card-img-top pt-4 pb-2" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Nome do Álbum</h5>
+            <h6 class="card-title">Nome do Artista</h6>
+            <div class="row g-2 mb-3 align-items-center">
+              <div class="col-auto">
+                <label for="inputRating" class="col-form-label text-muted card-text">Nota:</label>
+              </div>
+              <div class="col-auto rating" id="inputRating">
+                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+              </div>
+            </div>
+            <div class="collapse" id="card-1">
+              <div class="pb-2">
+                <p class="">Ano: 2020</p>
+                <p class="">Gênero: Pop</p>
+                <p class=""><a class="link" href="#">Ver comentários</a></p>
+              </div>
+            </div>
+            <div class="container-btn">
+              <p>
+                <a class="btn btn-secondary border-0 center" data-bs-toggle="collapse" href="#card-1" role="button"
+                  aria-expanded="false" aria-controls="collapseExample">
+                  Detalhes
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mx-2 card" style="width: 18rem;">
+          <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg"
+            class="card-img-top pt-4 pb-2" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Nome do Álbum</h5>
+            <h6 class="card-title">Nome do Artista</h6>
+            <div class="row g-2 mb-3 align-items-center">
+              <div class="col-auto">
+                <label for="inputRating" class="col-form-label text-muted card-text">Nota:</label>
+              </div>
+              <div class="col-auto rating" id="inputRating">
+                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+              </div>
+            </div>
+            <div class="collapse" id="card-1">
+              <div class="pb-2">
+                <p class="">Ano: 2020</p>
+                <p class="">Gênero: Pop</p>
+                <p class=""><a class="link" href="#">Ver comentários</a></p>
+              </div>
+            </div>
+            <div class="container-btn">
+              <p>
+                <a class="btn btn-secondary border-0 center" data-bs-toggle="collapse" href="#card-1" role="button"
+                  aria-expanded="false" aria-controls="collapseExample">
+                  Detalhes
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    </div>
+  </section>
 
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-    crossorigin="anonymous"></script>
-
+  <%- include('partials/footer') -%>
 </body>
 
 </html>
