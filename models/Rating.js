@@ -22,6 +22,10 @@ const Rating = sequelize.define('Ratings', {
     allowNull: false,
     unique: true,
   },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 Album.hasMany(Rating);

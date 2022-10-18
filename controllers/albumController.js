@@ -33,8 +33,8 @@ router.get('/all',
 
 router.get('/:id',
   async (req, res) => {
-    const album = await Album.findByPk(req.params.id);
-    res.json(album);
+    const album = await Album.findByPk(req.params.id, {include: Artist});
+    res.render('album', {album});
   },
 );
 
