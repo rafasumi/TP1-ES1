@@ -109,6 +109,37 @@ hr.divider-light {
   background-color: #fff;
 }
 
+header.masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(135deg, #EAE2B7 0%, #F77F00 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+header.masthead h1, header.masthead .h1 {
+  font-size: 2.25rem;
+}
+@media (min-width: 992px) {
+  header.masthead {
+    min-height: 30rem;
+    padding-top: 13rem;
+    padding-bottom: 0;
+  }
+  header.masthead p {
+    font-size: 1.15rem;
+  }
+  header.masthead h1, header.masthead .h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  header.masthead h1, header.masthead .h1 {
+    font-size: 3.5rem;
+  }
+}
+
 .rating {
   display: flex;
   flex-direction: row-reverse;

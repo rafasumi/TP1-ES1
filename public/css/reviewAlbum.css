@@ -20,7 +20,13 @@
 }
 
 .page-section {
-  padding: 5rem 0;
+  background-color: #fff;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .text-white-75 {
@@ -40,7 +46,7 @@
 
 .rating > label {
   text-align: left; 
-  font-size: 2vw;
+  font-size: 1.7rem;
   color: #FFD600;
   cursor: pointer;
 }
@@ -60,26 +66,81 @@
 
 .rating:hover > input:checked ~ label:before{ opacity: 0.4; }
 
+.rating-small {
+  margin-left: -1rem;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rating-small > input{ display:none;}
+
+.rating-small > label {
+  text-align: left; 
+  font-size: 1.4rem;
+  color: #FFD600;
+  cursor: pointer;
+}
+.rating-small > label::before{ 
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
+}
+.rating-small > label:hover:before,
+.rating-small > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+
+.rating-small > input:checked ~ label:before{
+  opacity:1;
+}
+
+.rating-small:hover > input:checked ~ label:before{ opacity: 0.4; }
 
 body{
-  background: rgb(234,226,183);
   background: linear-gradient(135deg, #FCBF49 0%, #F77F00 100%);
+	max-width: 99%;
+}
+
+.perfil-album{
+	padding: 2rem 0;
+}
+
+#perfil{
+  max-width: 25rem;
+	max-height: 32rem;
+  padding: 1rem 2rem;
+}
+
+#reviews{
+	max-width: 50rem;
+  padding: 1rem 2rem;
+}
+
+.content{
+	margin: 6rem 2rem;
+}
+
+.comment {
+	background-color: rgba(247, 127, 0, 0.1);
+	border-top-left-radius: 12.5px;
+	border-top-right-radius: 12.5px;
+	border-bottom-left-radius: 12.5px;
+	border-bottom-right-radius: 12.5px;
+}
+
+.img-album{
+  max-width: 18rem;
 }
 
 .registration-form{
-	padding: 50px 0;
+	padding: 1rem 0;
 }
 
 .registration-form form{
   background-color: #fff;
   max-width: 600px;
   margin: auto;
-  padding: 50px 70px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  padding: 0 3rem;
   text-align: center;
 }
 
@@ -88,7 +149,7 @@ body{
   margin-bottom: 25px;
 }
 
-.registration-form .create-account{
+.registration-form .enviar{
   border-radius: 30px;
   padding: 10px 20px;
   font-size: 18px;
