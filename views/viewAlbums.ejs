@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <%- include('partials/stylehead') -%>
+
+  <link rel="stylesheet" href="/css/viewAlbum.css">
+
+  <title>Rate.io - Álbuns</title>
+</head>
+
+<body id="page-top">
+  <%- include('partials/navbar') -%>
+
+  <section class="page-section" id="albuns">
+    <div class="container px-4 px-lg-5">
+      <h2 class="text-center mt-0">Álbuns Cadastrados</h2>
+      <div class="text-center py-4">
+        <a href="/album/create" class="btn btn-secondary border-0">Adicionar Álbum</a>
+      </div>
+      <hr class="album-divider border-0 mb-5" />
+      <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
+        <% albums.forEach(album => { %>
+          <div class="mx-2 card" style="width: 18rem;">
+            <img src=<%= album.image %> class="card-img-top pt-4 pb-2">
+            <div class="card-body">
+              <h5 class="card-title"><%- album.name %></h5>
+              <h6 class="card-title"><%- album.Artist.name %></h6>
+              <div class="row g-2 mb-3 align-items-center">
+                <div class="col-auto">
+                  <label for="inputRating" class="col-form-label text-muted card-text">Nota:</label>
+                </div>
+                <div class="col-auto rating" id="inputRating">
+                  <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                  <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                  <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                  <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                  <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                </div>
+              </div>
+              <div class="collapse" id="card-1">
+                <div class="pb-2">
+                  <p class="">Ano: <%- album.year %></p>
+                  <p class=""><a class="link" href="#">Ver comentários</a></p>
+                </div>
+              </div>
+              <div class="container-btn">
+                <p>
+                  <a class="btn btn-secondary border-0 center" data-bs-toggle="collapse" href="#card-1" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Detalhes
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') -%>
+</body>
+
+</html>
