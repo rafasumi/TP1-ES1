@@ -18,16 +18,23 @@ router.post('/',
       artistId: req.body.artist,
     };
 
-    await Album.create(album);
+    const {id} = await Album.create(album);
 
-    res.redirect('/album');
+    res.redirect(`/album/${id}`);
   },
 );
 
-router.get('/',
+router.get('/all',
   async (req, res) => {
-    const albums = await Album.findAll();
-    res.render('viewAlbum', {albums});
+    const albums = await Album.findAll({include: Artist});
+    res.render('viewAlbums', {albums});
+  },
+);
+
+router.get('/:id',
+  async (req, res) => {
+    const album = await Album.findByPk(req.params.id);
+    res.json(album);
   },
 );
 
