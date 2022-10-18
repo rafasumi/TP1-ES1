@@ -13,26 +13,26 @@
 
   <section class="page-section" id="form">
     <div class="registration-form">
-      <form>
+      <form action="/artist/" method="POST">
         <h2 class="text-center mt-0 pb-4">Cadastrar Artista</h2>
         <div class="form-floating">
-          <input type="text" class="form-control item" id="nome" placeholder="Nome do álbum">
-          <label for="nome">Nome do artista</label>
+          <input type="text" class="form-control item" id="name" name="name" placeholder="Nome do artista">
+          <label for="name">Nome do artista</label>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control item" id="artista" placeholder="Nome do artista">
-          <label for="artista">Gênero musical</label>
+          <input type="text" class="form-control item" id="musicalGender" name="musicalGender" placeholder="Gênero musical">
+          <label for="musicalGender">Gênero musical</label>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control item" id="ano" placeholder="Ano">
-          <label for="ano">País de origem</label>
+          <input type="text" class="form-control item" id="country" name="country" placeholder="País de origem">
+          <label for="country">País de origem</label>
         </div>
         <div class="form-floating">
-          <input type="url" class="form-control item" id="url" placeholder="URL para imagem do álbum">
-          <label for="url">URL para imagem do artista</label>
+          <input type="url" class="form-control item" id="image" name="image" placeholder="URL para imagem do artista">
+          <label for="image">URL para imagem do artista</label>
         </div>
         <div class="form-floating">
-          <button type="button" class="btn btn-secondary create-account w-100">Cadastrar</button>
+          <button type="submit" class="btn btn-secondary create-account w-100">Cadastrar</button>
         </div>
       </form>
     </div>
