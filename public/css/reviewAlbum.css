@@ -165,3 +165,23 @@ body{
     margin: 0 2%;
   }
 }
+
+@media (max-width: 1276px) {
+  .page-section{
+    margin-top: 2rem;
+  }
+}
+
+.button-album{
+  width: 10rem;
+}
+
+.enviar{
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  margin-top: 20px;
+}

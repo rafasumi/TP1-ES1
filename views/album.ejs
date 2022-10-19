@@ -1,33 +1,208 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <%- include('partials/stylehead') -%>
-    
-    <!-- Arquivos CSS de estilização da página -->
-    <link rel="stylesheet" href="/css/reviewAlbum.css">
-    
-    <title>Rate.io - Página Inicial</title>
-  </head>
 
-  <body id="page-top">
-    <%- include('partials/navbar') -%>
-    
-    <div class="row content d-flex justify-content-evenly">
-      <section class="page-section" id="perfil">
-        <div class="perfil-album">
-          <div class="row justify-content-center">
-            <div class="row d-flex justify-content-center pb-4">
-              <img src=<%= album.image %> class="img-album" alt="...">
+<head>
+  <%- include('partials/stylehead') -%>
+
+  <!-- Arquivos CSS de estilização da página -->
+  <link rel="stylesheet" href="/css/reviewAlbum.css">
+
+  <title>Rate.io - <%- album.name %></title>
+</head>
+
+<body id="page-top">
+  <%- include('partials/navbar') -%>
+
+  <div class="row content d-flex justify-content-evenly">
+    <section class="page-section" id="perfil">
+      <div class="perfil-album">
+        <div class="row justify-content-center">
+          <div class="row d-flex justify-content-center pb-4">
+            <img src=<%= album.image %> class="img-album" alt="...">
+          </div>
+          <div class="text-center row">
+            <h5 class="card-title"><strong><%- album.name %></strong></h5>
+            <h6 class="card-title my-3"><strong><%- album.Artist.name %></strong></h6>
+            <h6 class=""><strong>Ano: </strong><%- album.year %></h6>
+            <div class="row d-flex justify-content-center">
+              <div class="col-auto">
+                <h6 for="inputRating" class="col-form-label"><strong>Nota Média:</strong></h6>
+              </div>
+              <div class="col-auto rating-small" id="inputRating">
+                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+              </div>
             </div>
-            <div class="text-center row">
-              <h5 class="card-title"><strong><%- album.name %></strong></h5>
-              <h6 class="card-title my-3"><strong><%- album.Artist.name %></strong></h6>
-              <h6 class=""><strong>Ano: </strong><%- album.year %></h6>
-              <div class="row d-flex justify-content-center">
-                <div class="col-auto">
-                  <h6 for="inputRating" class="col-form-label"><strong>Nota Média:</strong></h6>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="reviews">
+      <div class="perfil-album reviews">
+        <div class="row justify-content-center align-items-center">
+          <div class="row">
+            <div class="row d-flex justify-content-center">
+              <div class="">
+                <div class="card shadow-0 border-0">
+                  <div class="card-body p-4">
+                    <button type="button" class="btn btn-secondary button-album border-0 mx-2 mb-4"
+                      data-bs-toggle="modal" data-bs-target="#avaliar">
+                      Avaliar Álbum
+                    </button>
+                    <button type="button" class="btn btn-secondary button-album border-0 mx-2 mb-4"
+                      data-bs-toggle="modal" data-bs-target="#editar">
+                      Editar Álbum
+                    </button>
+                    <button type="button" class="btn btn-secondary button-album border-0 mx-2 mb-4"
+                      data-bs-toggle="modal" data-bs-target="#excluir">
+                      Excluir Álbum
+                    </button>
+                    <!-- <div class="form-outline mb-4">
+                        <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+                        <label class="form-label" for="addANote">+ Add a note</label>
+                      </div> -->
+                    <div class="card mb-4 border-0 comment">
+                      <div class="card-body">
+                        <p class="text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                          tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <p class="small mb-0 ms-2"><strong>– Mary Kate</strong></p>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div class="row d-flex justify-content-center">
+                              <div class="col-auto">
+                                <h6 for="inputRating" class="col-form-label"><strong>Nota:</strong></h6>
+                              </div>
+                              <div class="col-auto rating-small" id="inputRating">
+                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-4 border-0 comment">
+                      <div class="card-body">
+                        <p class="text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                          tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <p class="small mb-0 ms-2"><strong>– Mary Kate</strong></p>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div class="row d-flex justify-content-center">
+                              <div class="col-auto">
+                                <h6 for="inputRating" class="col-form-label"><strong>Nota:</strong></h6>
+                              </div>
+                              <div class="col-auto rating-small" id="inputRating">
+                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-4 border-0 comment">
+                      <div class="card-body">
+                        <p class="text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                          tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <p class="small mb-0 ms-2"><strong>– Mary Kate</strong></p>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div class="row d-flex justify-content-center">
+                              <div class="col-auto">
+                                <h6 for="inputRating" class="col-form-label"><strong>Nota:</strong></h6>
+                              </div>
+                              <div class="col-auto rating-small" id="inputRating">
+                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-4 border-0 comment">
+                      <div class="card-body">
+                        <p class="text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                          tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <p class="small mb-0 ms-2"><strong>– Mary Kate</strong></p>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div class="row d-flex justify-content-center">
+                              <div class="col-auto">
+                                <h6 for="inputRating" class="col-form-label"><strong>Nota:</strong></h6>
+                              </div>
+                              <div class="col-auto rating-small" id="inputRating">
+                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-auto rating-small" id="inputRating">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal para Avaliar Álbum-->
+  <div class="modal fade" id="avaliar" tabindex="-1" aria-labelledby="avaliar" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="registration-form pt-0">
+            <form action="/rating" method="POST">
+              <h2 class="pb-4">Avaliar</h2>
+              <div class="form-floating">
+                <input type="text" class="form-control item" name="username" id="username">
+                <label for="username">Nome</label>
+              </div>
+              <div class="form-floating">
+                <input type="text" class="form-control item" name="email" id="email">
+                <label for="email">E-mail</label>
+              </div>
+              <div class="form-floating">
+                <textarea class="form-control item" name="comment" id="comment" style="height: 7rem"></textarea>
+                <label for="comment">Comentário</label>
+              </div>
+              <div class="row g-2 mb-4 align-items-center">
+                <div class="col-auto">
+                  <label for="rating" class="col-form-label text-muted card-text">Nota:</label>
+                </div>
+                <div class="col-auto rating" id="rating">
                   <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
                   <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
                   <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
@@ -35,177 +210,70 @@
                   <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <section class="page-section" id="reviews">
-        <div class="perfil-album reviews">
-          <div class="row justify-content-center align-items-center">
-            <div class="row">
-              <div class="row d-flex justify-content-center">
-                <div class="">
-                  <div class="card shadow-0 border-0">
-                    <div class="card-body p-4">
-                      <button type="button" class="btn btn-secondary border-0 w-25 mb-5" data-bs-toggle="modal" data-bs-target="#avaliar">
-                        Avaliar
-                      </button>
-                      <!-- <div class="form-outline mb-4">
-                        <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
-                        <label class="form-label" for="addANote">+ Add a note</label>
-                      </div> -->
-                      <div class="card mb-4 border-0 comment">
-                        <div class="card-body">
-                          <p class="text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
-                              <p class="small mb-0 ms-2"><strong>– Mary Kate</strong></p>
-                            </div>
-                            <div class="d-flex flex-row align-items-center">
-                              <div class="row d-flex justify-content-center">
-                                <div class="col-auto">
-                                  <h6 for="inputRating" class="col-form-label"><strong>Nota:</strong></h6>
-                                </div>
-                                <div class="col-auto rating-small" id="inputRating">
-                                  <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                  <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                  <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                  <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                  <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card mb-4 border-0 comment">
-                        <div class="card-body">
-                          <p class="text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
-                              <p class="small mb-0 ms-2"><strong>– Mary Kate</strong></p>
-                            </div>
-                            <div class="d-flex flex-row align-items-center">
-                              <div class="row d-flex justify-content-center">
-                                <div class="col-auto">
-                                  <h6 for="inputRating" class="col-form-label"><strong>Nota:</strong></h6>
-                                </div>
-                                <div class="col-auto rating-small" id="inputRating">
-                                  <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                  <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                  <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                  <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                  <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card mb-4 border-0 comment">
-                        <div class="card-body">
-                          <p class="text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
-                              <p class="small mb-0 ms-2"><strong>– Mary Kate</strong></p>
-                            </div>
-                            <div class="d-flex flex-row align-items-center">
-                              <div class="row d-flex justify-content-center">
-                                <div class="col-auto">
-                                  <h6 for="inputRating" class="col-form-label"><strong>Nota:</strong></h6>
-                                </div>
-                                <div class="col-auto rating-small" id="inputRating">
-                                  <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                  <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                  <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                  <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                  <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card mb-4 border-0 comment">
-                        <div class="card-body">
-                          <p class="text-start">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                          <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
-                              <p class="small mb-0 ms-2"><strong>– Mary Kate</strong></p>
-                            </div>
-                            <div class="d-flex flex-row align-items-center">
-                              <div class="row d-flex justify-content-center">
-                                <div class="col-auto">
-                                  <h6 for="inputRating" class="col-form-label"><strong>Nota:</strong></h6>
-                                </div>
-                                <div class="col-auto rating-small" id="inputRating">
-                                  <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                  <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                  <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                  <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                  <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="form-floating">
+                <button type="submit" class="btn btn-secondary enviar w-100">Enviar</button>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="avaliar" tabindex="-1" aria-labelledby="avaliar" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header border-0">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <div class="registration-form">
-                <form action="/rating" method="POST">
-                  <h2 class="pb-4">Avaliar</h2>
-                  <div class="form-floating">
-                    <input type="text" class="form-control item" name="username" id="username">
-                    <label for="username">Nome</label>
-                  </div>
-                  <div class="form-floating">
-                    <input type="text" class="form-control item" name="email" id="email">
-                    <label for="email">E-mail</label>
-                  </div>
-                  <div class="form-floating">
-                    <textarea class="form-control item" name="comment" id="comment" style="height: 7rem"></textarea>
-                    <label for="comment">Comentário</label>
-                  </div>
-                  <div class="row g-2 mb-4 align-items-center">
-                    <div class="col-auto">
-                      <label for="rating" class="col-form-label text-muted card-text">Nota:</label>
-                    </div>
-                    <div class="col-auto rating" id="rating">
-                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                    </div>
-                  </div>
-                  <div class="form-floating">
-                    <button type="submit" class="btn btn-secondary enviar w-100">Enviar</button>
-                  </div>
-                </form>
-              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    
-    <%- include('partials/footer') -%>
-  </body>
+  </div>
+
+  <!-- Modal para Editar Álbum-->
+  <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="editar" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header border-0 pb-0">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="registration-form pt-0">
+						<form action="/update" method="POST">
+							<h2 class="pb-4">Editar Álbum</h2>
+							<div class="form-floating">
+                <input type="text" class="form-control item" name="name" id="name" placeholder="Nome do álbum">
+                <label for="name">Nome do álbum</label>
+              </div>
+              <div class="form-floating">
+                <input type="text" class="form-select item" name="artist" id="artist" required>
+                <label for="artist">Nome do artista</label>
+              </div>
+              <div class="form-floating">
+                <input type="text" class="form-control item" name="year" id="year" placeholder="Ano">
+                <label for="year">Ano de lançamento</label>
+              </div>
+              <div class="form-floating">
+                <input type="url" class="form-control item" name="image" id="image" placeholder="URL para imagem do álbum">
+                <label for="image">URL para imagem do álbum</label>
+              </div>
+							<div class="form-floating">
+								<button type="submit" class="btn btn-secondary enviar w-100">Atualizar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <!-- Modal para Excluir Álbum-->
+	<div class="modal fade" id="excluir" tabindex="-1" aria-labelledby="excluir" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header border-0 pb-0">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body justify-content-center text-center mt-3 mb-5 mx-5">
+					<h2 class="my-5">Você tem certeza que quer excluir esse álbum?</h2>
+					<button type="submit" class="btn btn-secondary enviar w-100 my-2">Deletar</button>
+					<button type="submit" class="btn btn-secondary enviar w-100 my-2" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <%- include('partials/footer') -%>
+</body>
+
 </html>
