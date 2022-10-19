@@ -25,30 +25,38 @@ router.post('/',
 router.get('/all',
   async (req, res) => {
     const artists = await Artist.findAll();
-    res.render('viewArtists', {artists});
+    if (!artists) res.status(404).json('Artistas não encontrados').end();
+    else res.render('viewArtists', {artists});
   },
 );
 
 router.get('/:id',
   async (req, res) => {
     const artist = await Artist.findByPk(req.params.id);
-    res.render('artist', {artist});
+    if (!artist) res.status(404).json('Artista não encontrado').end();
+    else res.render('artist', {artist});
   },
 );
 
 router.put('/:id',
   async (req, res) => {
     const artist = await Artist.findByPk(req.params.id);
-    await artist.update(req.body);
-    res.status(200).end();
+    if (!artist) res.status(404).json('Artista não encontrado').end();
+    else {
+      await artist.update(req.body);
+      res.status(200).end();
+    }
   },
 );
 
 router.delete('/:id',
   async (req, res) => {
     const artist = await Artist.findByPk(req.params.id);
-    await artist.destroy();
-    res.status(200).end();
+    if (!artist) res.status(404).json('Artista não encontrado').end();
+    else {
+      await artist.destroy();
+      res.status(200).end();
+    }
   },
 );
 

@@ -18,23 +18,30 @@ router.post('/createRating',
 router.get('/getRatings',
   async (req, res) => {
     const ratings = await Rating.findAll();
-    res.status(200).json(ratings);
+    if (!ratings) res.status(404).json('Avaliações não encontradas').end();
+    else res.status(200).json(ratings);
   },
 );
 
 router.put('/updateRating/:id',
   async (req, res) => {
     const rating = await Rating.findByPk(req.params.id);
-    await rating.update(req.body);
-    res.status(200).end();
+    if (!rating) res.status(404).json('Avaliação não encontrada').end();
+    else {
+      await rating.update(req.body);
+      res.status(200).end();
+    }
   },
 );
 
 router.delete('/deleteRating/:id',
   async (req, res) => {
     const rating = await Rating.findByPk(req.params.id);
-    await rating.destroy();
-    res.status(200).end();
+    if (!rating) res.status(404).json('Avaliação não encontrada').end();
+    else {
+      await rating.destroy();
+      res.status(200).end();
+    }
   },
 );
 
