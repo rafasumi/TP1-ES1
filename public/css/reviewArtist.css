@@ -1,0 +1,196 @@
+@charset "UTF-8";
+/*!
+* Start Bootstrap - Creative v7.0.6 (https://startbootstrap.com/theme/creative)
+* Copyright 2013-2022 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
+*/
+
+
+.link {
+  color: #F77F00;
+  text-decoration: none; 
+}
+
+.link:hover {
+  color: #D62828;
+}
+
+.btn-secondary:hover {
+  background-color: #D62828 !important;
+}
+
+.page-section {
+  background-color: #fff;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.text-white-75 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+#mainNav {
+  background-color: transparent;
+}  
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rating > input{ display:none;}
+
+.rating > label {
+  text-align: left; 
+  font-size: 1.7rem;
+  color: #FFD600;
+  cursor: pointer;
+}
+.rating > label::before{ 
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
+}
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+
+.rating > input:checked ~ label:before{
+  opacity:1;
+}
+
+.rating:hover > input:checked ~ label:before{ opacity: 0.4; }
+
+.rating-small {
+  margin-left: -1rem;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rating-small > input{ display:none;}
+
+.rating-small > label {
+  text-align: left; 
+  font-size: 1.4rem;
+  color: #FFD600;
+  cursor: pointer;
+}
+.rating-small > label::before{ 
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
+}
+.rating-small > label:hover:before,
+.rating-small > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+
+.rating-small > input:checked ~ label:before{
+  opacity:1;
+}
+
+.rating-small:hover > input:checked ~ label:before{ opacity: 0.4; }
+
+body{
+  background: linear-gradient(270deg, #FCBF49 0%, #F77F00 100%);
+	max-width: 99%;
+}
+
+.perfil-album{
+	padding: 1rem 0;
+}
+
+#perfil{
+  max-width: 25rem;
+  max-height: 34rem;
+  padding: 1rem 2rem;
+}
+
+#reviews{
+	max-width: 50rem;
+  padding: 1rem 2rem;
+}
+
+.content{
+	margin: 6rem 2rem;
+}
+
+.comment {
+	background-color: rgba(247, 127, 0, 0.1);
+	border-top-left-radius: 12.5px;
+	border-top-right-radius: 12.5px;
+	border-bottom-left-radius: 12.5px;
+	border-bottom-right-radius: 12.5px;
+}
+
+.img-album{
+  max-width: 18rem;
+}
+
+.registration-form{
+	padding: 1rem 0;
+}
+
+.registration-form form{
+  background-color: #fff;
+  max-width: 600px;
+  margin: auto;
+  padding: 0 3rem;
+  text-align: center;
+}
+
+.registration-form .item{
+	border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.registration-form .enviar{
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  margin-top: 20px;
+}
+
+.enviar{
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  margin-top: 20px;
+}
+
+@media (max-width: 576px) {
+  .registration-form form{
+    padding: 50px 20px;
+    margin: 0 2%;
+  }
+}
+
+.card-title{
+	margin-bottom: 1rem;
+}
+
+.card-img-top{
+	max-height: 10rem;
+	max-width: 10rem;
+}
+
+div.card{
+	padding: 0rem;
+}
+
+@media (max-width: 1276px) {
+  .page-section{
+    margin-top: 2rem;
+  }
+}
