@@ -46,91 +46,27 @@
             <h2 class="text-center mt-0">Álbuns do Momento</h2>
             <hr class="album-divider border-0" />
             <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
-              <div class="mx-2 card" style="width: 18rem;">
-                <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg" class="card-img-top pt-4 pb-2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Nome da Música</h5>
-                  <div class="row g-2 mb-3 align-items-center">
-                    <div class="col-auto">
-                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+              <% albums.forEach(album => { %>
+                <div class="mx-2 card" style="width: 18rem;">
+                  <img src=<%= album.image %>  class="card-img-top pt-4 pb-2" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><%- album.name %> </h5>
+                    <div class="row g-2 mb-3 align-items-center">
+                      <div class="col-auto">
+                        <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                      </div>
+                      <div class="col-auto rating" id="inputRating">
+                        <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                      </div>
                     </div>
-                    <div class="col-auto rating" id="inputRating">
-                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                    </div>
+                    <a href="/album/<%= album.id %> " class="btn btn-secondary border-0">Ver detalhes</a>
                   </div>
-                  <a href="#" class="btn btn-secondary border-0">Ver detalhes</a>
                 </div>
-              </div>
-              <div class="mx-2 card" style="width: 18rem;">
-                <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg" class="card-img-top pt-4 pb-2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Nome da Música</h5>
-                  <div class="row g-2 mb-3 align-items-center">
-                    <div class="col-auto">
-                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
-                    </div>
-                    <div class="col-auto rating" id="inputRating">
-                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                    </div>
-                  </div>
-                  <div class="rating">
-                    
-                  </div>
-                  <a href="#" class="btn btn-secondary border-0">Ver detalhes</a>
-                </div>
-              </div>
-              <div class="mx-2 card" style="width: 18rem;">
-                <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg" class="card-img-top pt-4 pb-2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Nome da Música</h5>
-                  <div class="row g-2 mb-3 align-items-center">
-                    <div class="col-auto">
-                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
-                    </div>
-                    <div class="col-auto rating" id="inputRating">
-                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                    </div>
-                  </div>
-                  <div class="rating">
-                    
-                  </div>
-                  <a href="#" class="btn btn-secondary border-0">Ver detalhes</a>
-                </div>
-              </div>
-              <div class="mx-2 card" style="width: 18rem;">
-                <img src="https://www.x8chairs.com/wp-content/uploads/2020/10/image-placeholder.jpg" class="card-img-top pt-4 pb-2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Nome da Música</h5>
-                  <div class="row g-2 mb-3 align-items-center">
-                    <div class="col-auto">
-                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
-                    </div>
-                    <div class="col-auto rating" id="inputRating">
-                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                    </div>
-                  </div>
-                  <div class="rating">
-                    
-                  </div>
-                  <a href="#" class="btn btn-secondary border-0">Ver detalhes</a>
-                </div>
-              </div>
+              <% }) %>
             </div>
         </div>
     </section>
@@ -143,94 +79,30 @@
             <h2 class="text-center mt-0">Artistas do Momento</h2>
             <hr class="artista-divider border-0" />
             <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
-              <div class="mx-2 card" style="width: 18rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" class="card-img-top pt-4 pb-2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Nome do Artista</h5>
-                  <div class="row g-2 mb-3 align-items-center">
-                    <div class="col-auto">
-                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+              <% artists.forEach(artist => { %>
+                <div class="mx-2 card" style="width: 18rem;">
+                  <img src=<%= artist.image %>  class="card-img-top pt-4 pb-2" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><%- artist.name %> </h5>
+                    <div class="row g-2 mb-3 align-items-center">
+                      <div class="col-auto">
+                        <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
+                      </div>
+                      <div class="col-auto rating" id="inputRating">
+                        <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                      </div>
                     </div>
-                    <div class="col-auto rating" id="inputRating">
-                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    <div class="rating">
+                      
                     </div>
+                    <a href="/artist/<%= artist.id %> " class="btn btn-success border-0">Ver detalhes</a>
                   </div>
-                  <div class="rating">
-                    
-                  </div>
-                  <a href="#" class="btn btn-success border-0">Ver detalhes</a>
                 </div>
-              </div>
-              <div class="mx-2 card" style="width: 18rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" class="card-img-top pt-4 pb-2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Nome do Artista</h5>
-                  <div class="row g-2 mb-3 align-items-center">
-                    <div class="col-auto">
-                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
-                    </div>
-                    <div class="col-auto rating" id="inputRating">
-                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                    </div>
-                  </div>
-                  <div class="rating">
-                    
-                  </div>
-                  <a href="#" class="btn btn-success border-0">Ver detalhes</a>
-                </div>
-              </div>
-              <div class="mx-2 card" style="width: 18rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" class="card-img-top pt-4 pb-2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Nome do Artista</h5>
-                  <div class="row g-2 mb-3 align-items-center">
-                    <div class="col-auto">
-                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
-                    </div>
-                    <div class="col-auto rating" id="inputRating">
-                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                    </div>
-                  </div>
-                  <div class="rating">
-                    
-                  </div>
-                  <a href="#" class="btn btn-success border-0">Ver detalhes</a>
-                </div>
-              </div>
-              <div class="mx-2 card" style="width: 18rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" class="card-img-top pt-4 pb-2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Nome do Artista</h5>
-                  <div class="row g-2 mb-3 align-items-center">
-                    <div class="col-auto">
-                      <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
-                    </div>
-                    <div class="col-auto rating" id="inputRating">
-                      <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                      <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                      <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                      <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                      <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                    </div>
-                  </div>
-                  <div class="rating">
-                    
-                  </div>
-                  <a href="#" class="btn btn-success border-0">Ver detalhes</a>
-                </div>
-              </div>
+              <% }) %>
             </div>
         </div>
     </section>
