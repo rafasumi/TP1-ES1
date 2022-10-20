@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const Artist = require('../models/Artist');
+const Album = require('../models/Album');
 const objectFilter = require('../middlewares/objectFilter');
+const artistValidate = require('../middlewares/artistValidator');
 
 router.get('/create',
   (req, res) => {
@@ -35,32 +37,36 @@ router.get('/all',
 
 router.get('/:id',
   async (req, res) => {
-    const artist = await Artist.findByPk(req.params.id);
-    if (!artist) res.status(404).json('Artista não encontrado').end();
-    else res.render('artist', {artist});
-  },
-);
-
-router.put('/:id',
-  objectFilter(['body'], ['name', 'musicalGender', 'country', 'image']),
-  artistValidate('update'),
-  async (req, res) => {
-    const artist = await Artist.findByPk(req.params.id);
+    const artist = await Artist.findByPk(req.params.id, {include: Album});
     if (!artist) res.status(404).json('Artista não encontrado').end();
     else {
-      await artist.update(req.body);
-      res.status(200).end();
+      artist.Albums = artist.Albums.map((album) => album.dataValues);
+      res.render('artist', {artist});
     }
   },
 );
 
-router.delete('/:id',
+router.put('update/:id',
+  objectFilter(['body'], ['name', 'musicalGender', 'country', 'image']),
+  artistValidate('update'),
+  async (req, res) => {
+    const {id} = req.body;
+    const artist = await Artist.findByPk(id);
+    if (!artist) res.status(404).json('Artista não encontrado').end();
+    else {
+      await artist.update(req.body);
+      res.redirect(`/artist/${id}`);
+    }
+  },
+);
+
+router.post('/delete/:id',
   async (req, res) => {
     const artist = await Artist.findByPk(req.params.id);
     if (!artist) res.status(404).json('Artista não encontrado').end();
     else {
       await artist.destroy();
-      res.status(200).end();
+      res.redirect('/artist/all');
     }
   },
 );
