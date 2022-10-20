@@ -1,5 +1,6 @@
-const Artist = require('../models/Artist');
 const router = require('express').Router();
+const Artist = require('../models/Artist');
+const objectFilter = require('../middlewares/objectFilter');
 
 router.get('/create',
   (req, res) => {
@@ -8,6 +9,8 @@ router.get('/create',
 );
 
 router.post('/',
+  objectFilter(['body'], ['name', 'musicalGender', 'country', 'image']),
+  artistValidate('create'),
   async (req, res) => {
     const artist = {
       name: req.body.name,
@@ -39,6 +42,8 @@ router.get('/:id',
 );
 
 router.put('/:id',
+  objectFilter(['body'], ['name', 'musicalGender', 'country', 'image']),
+  artistValidate('update'),
   async (req, res) => {
     const artist = await Artist.findByPk(req.params.id);
     if (!artist) res.status(404).json('Artista não encontrado').end();

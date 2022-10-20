@@ -1,6 +1,8 @@
+const router = require('express').Router();
 const Album = require('../models/Album');
 const Artist = require('../models/Artist');
-const router = require('express').Router();
+const objectFilter = require('../middlewares/objectFilter');
+const albumValidate = require('../middlewares/albumValidator');
 
 router.get('/create',
   async (req, res) => {
@@ -11,6 +13,8 @@ router.get('/create',
 );
 
 router.post('/',
+  objectFilter(['body'], ['name', 'year', 'image', 'artistId']),
+  albumValidate('create'),
   async (req, res) => {
     const album = {
       name: req.body.name,
@@ -18,6 +22,9 @@ router.post('/',
       image: req.body.image,
       artistId: req.body.artist,
     };
+
+    const artist = await Artist.findByPk(album.artistId);
+    if (!artist) res.status(404).json('Artista não encontrado').end();
 
     const {id} = await Album.create(album);
 
@@ -42,6 +49,8 @@ router.get('/:id',
 );
 
 router.put('/:id',
+  objectFilter(['body'], ['name', 'year', 'image', 'artistId']),
+  albumValidate('update'),
   async (req, res) => {
     const album = await Album.findByPk(req.params.id);
     if (!album) res.status(404).json('Álbum não encontrado').end();
