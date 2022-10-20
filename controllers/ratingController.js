@@ -1,7 +1,11 @@
 const Rating = require('../models/Rating');
 const router = require('express').Router();
+const ratingValidate = require('../middlewares/ratingValidator');
+const objectFilter = require('../middlewares/objectFilter');
 
 router.post('/createRating',
+  objectFilter(['body'], ['value', 'comment', 'email']),
+  ratingValidate('create'),
   async (req, res) => {
     const rating = {
       value: req.body.value,
@@ -24,6 +28,8 @@ router.get('/getRatings',
 );
 
 router.put('/updateRating/:id',
+  objectFilter(['body'], ['value', 'comment', 'email']),
+  ratingValidate('updateRating'),
   async (req, res) => {
     const rating = await Rating.findByPk(req.params.id);
     if (!rating) res.status(404).json('Avaliação não encontrada').end();

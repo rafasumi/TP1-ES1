@@ -1,6 +1,8 @@
+const router = require('express').Router();
 const Artist = require('../models/Artist');
 const Album = require('../models/Album');
-const router = require('express').Router();
+const objectFilter = require('../middlewares/objectFilter');
+const artistValidate = require('../middlewares/artistValidator');
 
 router.get('/create',
   (req, res) => {
@@ -9,6 +11,8 @@ router.get('/create',
 );
 
 router.post('/',
+  objectFilter(['body'], ['name', 'musicalGender', 'country', 'image']),
+  artistValidate('create'),
   async (req, res) => {
     const artist = {
       name: req.body.name,
@@ -42,7 +46,9 @@ router.get('/:id',
   },
 );
 
-router.post('/update',
+router.put('update/:id',
+  objectFilter(['body'], ['name', 'musicalGender', 'country', 'image']),
+  artistValidate('update'),
   async (req, res) => {
     const {id} = req.body;
     const artist = await Artist.findByPk(id);
