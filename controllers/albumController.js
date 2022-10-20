@@ -13,7 +13,7 @@ router.get('/create',
 );
 
 router.post('/',
-  objectFilter(['body'], ['name', 'year', 'image', 'artistId']),
+  objectFilter(['body'], ['name', 'year', 'image', 'artist']),
   albumValidate('create'),
   async (req, res) => {
     const album = {
@@ -49,7 +49,7 @@ router.get('/:id',
 );
 
 router.put('/:id',
-  objectFilter(['body'], ['name', 'year', 'image', 'artistId']),
+  objectFilter(['body'], ['name', 'year', 'image', 'artist']),
   albumValidate('update'),
   async (req, res) => {
     const album = await Album.findByPk(req.params.id);
