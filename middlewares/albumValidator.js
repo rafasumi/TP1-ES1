@@ -31,18 +31,18 @@ const getValidators = (method) => {
       body('name')
         .optional()
         .isString()
-        .withMessage('O nome do album deve ser uma texto válido.'),
+        .withMessage('O nome do album deve ser um texto válido.'),
       body('year')
         .optional()
         .isInt()
         .withMessage('O ano do album deve ser um número inteiro.'),
       body('image')
         .optional()
-        .isURL()
+        .if(body('image').notEmpty()).isURL()
         .withMessage('A capa do album deve ser um URL válido.'),
       body('artist')
         .optional()
-        .isInt()
+        .if(body('artist').notEmpty()).isInt()
         .withMessage('O artista do album deve ser um número inteiro.'),
     ];
   }

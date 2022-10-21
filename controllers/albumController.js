@@ -3,6 +3,7 @@ const Album = require('../models/Album');
 const Artist = require('../models/Artist');
 const objectFilter = require('../middlewares/objectFilter');
 const albumValidate = require('../middlewares/albumValidator');
+const Rating = require('../models/Rating');
 
 router.get('/create',
   async (req, res) => {
@@ -42,32 +43,35 @@ router.get('/all',
 
 router.get('/:id',
   async (req, res) => {
-    const album = await Album.findByPk(req.params.id, {include: Artist});
+    const album = await Album.findByPk(req.params.id,
+      {include: [Artist, Rating]});
+    const artists = await Artist.findAll();
     if (!album) res.status(404).json('Álbum não encontrado').end();
-    else res.render('album', {album});
+    else res.render('album', {album, artists});
   },
 );
 
-router.put('/:id',
-  objectFilter(['body'], ['name', 'year', 'image', 'artist']),
+router.post('/update',
+  objectFilter(['body'], ['id', 'name', 'year', 'image', 'artist']),
   albumValidate('update'),
   async (req, res) => {
-    const album = await Album.findByPk(req.params.id);
+    const {id} = req.body;
+    const album = await Album.findByPk(id);
     if (!album) res.status(404).json('Álbum não encontrado').end();
     else {
       await album.update(req.body);
-      res.status(200).end();
+      res.redirect(`/album/${id}`);
     }
   },
 );
 
-router.delete('/:id',
+router.post('/delete',
   async (req, res) => {
-    const album = await Album.findByPk(req.params.id);
+    const album = await Album.findByPk(req.body.id);
     if (!album) res.status(404).json('Álbum não encontrado').end();
     else {
       await album.destroy();
-      res.status(200).end();
+      res.redirect('/album/all');
     }
   },
 );
