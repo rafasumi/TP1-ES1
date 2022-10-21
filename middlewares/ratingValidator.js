@@ -6,7 +6,7 @@ const getValidators = (method) => {
   case 'create':
     return [
       body('value')
-        .notempty()
+        .notEmpty()
         .withMessage('A avaliação deve ser informada')
         .isInt({min: 1, max: 5})
         .withMessage('A avaliação deve ser um inteiro de 1 a 5 inclusive.'),
@@ -15,7 +15,7 @@ const getValidators = (method) => {
         .isAlphanumeric({ignore: ' '})
         .withMessage('O comentário deve ser um texto válido.'),
       body('email')
-        .notempty()
+        .notEmpty()
         .withMessage('O email deve ser informado')
         .isEmail()
         .withMessage('O email deve ser um email válido.'),
