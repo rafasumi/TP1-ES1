@@ -42,6 +42,7 @@ const getValidators = (method) => {
         .withMessage('O país do artista deve ser um texto válido.'),
       body('image')
         .optional()
+        .if(body('image').notEmpty())
         .isURL()
         .withMessage('A imagem do artista deve ser um URL válido.'),
     ];

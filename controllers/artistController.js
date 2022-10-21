@@ -47,7 +47,7 @@ router.get('/:id',
 );
 
 router.post('/update',
-  objectFilter(['body'], ['name', 'musicalGenre', 'country', 'image']),
+  objectFilter(['body'], ['id', 'name', 'musicalGenre', 'country', 'image']),
   artistValidate('update'),
   async (req, res) => {
     const {id} = req.body;
