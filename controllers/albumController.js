@@ -72,7 +72,7 @@ router.get('/:id',
     const album = await Album.findByPk(req.params.id,
       {include: [Artist, Rating]});
     const artists = await Artist.findAll();
-    if (!album) res.status(404).json('Álbum não encontrado h').end();
+    if (!album) res.status(404).json('Álbum não encontrado').end();
     else res.render('album', {album, artists});
   },
 );
