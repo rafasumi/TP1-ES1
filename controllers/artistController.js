@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const Artist = require('../models/Artist');
 const Album = require('../models/Album');
+
 const objectFilter = require('../middlewares/objectFilter');
 const artistValidate = require('../middlewares/artistValidator');
+
+const getAverageRating = require('./utils');
 
 router.get('/create',
   (req, res) => {
@@ -32,6 +35,29 @@ router.get('/all',
     const artists = await Artist.findAll();
     if (!artists) res.status(404).json('Artistas não encontrados').end();
     else res.render('viewArtists', {artists});
+  },
+);
+
+router.get('/averageAlbumRatings',
+  async (req, res) => {
+    const {artistId} = req.body;
+
+    const albums = await Album.findAll({where: {artistId: artistId}});
+
+    if (!albums.length) {
+      res.status(404).json('Álbuns não encontrados para esse artista').end();
+    } else {
+      let sum = 0;
+      const length = albums.length;
+
+      for (let i = 0; i < length; i++) {
+        const aux = parseFloat(
+          await getAverageRating(albums[i].getDataValue('id')));
+        sum += aux;
+      }
+
+      res.status(200).json((sum / length).toFixed(2)).end();
+    }
   },
 );
 

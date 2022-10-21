@@ -12,7 +12,7 @@ const getValidators = (method) => {
         .withMessage('A avaliação deve ser um inteiro de 1 a 5 inclusive.'),
       body('comment')
         .optional()
-        .isAlphanumeric('pt-BR', {ignore: ' '})
+        .isAlphanumeric('pt-BR', {ignore: ' .,;:-'})
         .withMessage('O comentário deve ser um texto válido.'),
       body('email')
         .notEmpty()

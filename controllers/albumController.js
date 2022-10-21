@@ -1,9 +1,13 @@
 const router = require('express').Router();
+
 const Album = require('../models/Album');
 const Artist = require('../models/Artist');
+const Rating = require('../models/Rating');
+
 const objectFilter = require('../middlewares/objectFilter');
 const albumValidate = require('../middlewares/albumValidator');
-const Rating = require('../models/Rating');
+
+const getAverageRating = require('./utils');
 
 router.get('/create',
   async (req, res) => {
@@ -26,10 +30,10 @@ router.post('/',
 
     const artist = await Artist.findByPk(album.artistId);
     if (!artist) res.status(404).json('Artista não encontrado').end();
-
-    const {id} = await Album.create(album);
-
-    res.redirect(`/album/${id}`);
+    else {
+      const {id} = await Album.create(album);
+      res.redirect(`/album/${id}`);
+    }
   },
 );
 
@@ -41,12 +45,34 @@ router.get('/all',
   },
 );
 
+router.get('/rating',
+  async (req, res) => {
+    const {id} = req.body;
+
+    const album = await Album.findByPk(id, {include: [Artist, Rating]});
+    if (!album) res.status(404).json('Álbum não encontrado').end();
+
+    // const artists = await Artist.findAll();
+    // if (!artists) res.status(404).json('Artistas não encontrados').end();
+
+    else {
+      const averageRating = await getAverageRating(id);
+
+      res.status(200).json(averageRating).end();
+
+    // Se quiser renderizar uma página com as avaliações do álbum
+    // só retirar os comments da rota
+    // res.render('album', {album, artists});
+    }
+  },
+);
+
 router.get('/:id',
   async (req, res) => {
     const album = await Album.findByPk(req.params.id,
       {include: [Artist, Rating]});
     const artists = await Artist.findAll();
-    if (!album) res.status(404).json('Álbum não encontrado').end();
+    if (!album) res.status(404).json('Álbum não encontrado h').end();
     else res.render('album', {album, artists});
   },
 );
