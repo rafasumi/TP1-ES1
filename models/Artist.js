@@ -12,7 +12,7 @@ const Artist = sequelize.define('Artists', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  musicalGender: {
+  musicalGenre: {
     type: DataTypes.STRING,
     allowNull: false,
   },

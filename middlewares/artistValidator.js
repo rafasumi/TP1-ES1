@@ -8,9 +8,9 @@ const getValidators = (method) => {
       body('name')
         .notEmpty()
         .withMessage('O nome do artista deve ser informado.')
-        .isAlpha({ignore: ' '})
+        .isAlpha('pt-BR', {ignore: ' '})
         .withMessage('O nome do artista deve ser um texto válido.'),
-      body('musicalGender')
+      body('musicalGenre')
         .notEmpty()
         .withMessage('O gênero musical do artista deve ser informado.')
         .isString()
@@ -30,9 +30,9 @@ const getValidators = (method) => {
     return [
       body('name')
         .optional()
-        .isAlpha({ignore: ' '})
+        .isAlpha('pt-BR', {ignore: ' '})
         .withMessage('O nome do artista deve ser um texto válido.'),
-      body('musicalGender')
+      body('musicalGenre')
         .optional()
         .isString()
         .withMessage('O gênero musical do artista deve ser um texto válido.'),

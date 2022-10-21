@@ -22,7 +22,7 @@
 					</div>
 					<div class="text-center row">
 						<h4 class="card-title"><strong><%- artist.name %></strong></h4>
-						<h6 class="card-title"><strong>Gênero musical: </strong><%- artist.musicalGender %></h6>
+						<h6 class="card-title"><strong>Gênero musical: </strong><%- artist.musicalGenre %></h6>
 						<h6 class="card-title"><strong>País de origem: </strong><%- artist.country %></h6>
 					</div>
 					<div class="row d-flex justify-content-center">
@@ -90,16 +90,16 @@
 				<div class="modal-body">
 					<div class="registration-form pt-0">
 						<form action="/artist/update" method="POST">
-							<input type="hidden" id="id" name="id" value=<%=artist.id%> >
+							<input type="hidden" id="id" name="id" value=<%=artist.id%>>
 							<h2 class="pb-4">Editar Artista</h2>
 							<div class="form-floating">
 								<input type="text" class="form-control item" id="name" name="name" placeholder="Nome do artista">
 								<label for="name">Nome do artista</label>
 							</div>
 							<div class="form-floating">
-								<input type="text" class="form-control item" id="musicalGender" name="musicalGender"
+								<input type="text" class="form-control item" id="musicalGenre" name="musicalGenre"
 									placeholder="Gênero musical">
-								<label for="musicalGender">Gênero musical</label>
+								<label for="musicalGenre">Gênero musical</label>
 							</div>
 							<div class="form-floating">
 								<input type="text" class="form-control item" id="country" name="country" placeholder="País de origem">
@@ -123,7 +123,8 @@
 	<!-- Modal para Excluir Artista -->
 	<div class="modal fade" id="excluir" tabindex="-1" aria-labelledby="excluir" aria-hidden="true">
 		<div class="modal-dialog">
-			<form action="/artist/delete/<%=artist.id%>" method="POST">
+			<form action="/artist/delete" method="POST">
+				<input type="hidden" id="id" name="id" value=<%=artist.id%>>
 				<div class="modal-content">
 					<div class="modal-header border-0 pb-0">
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

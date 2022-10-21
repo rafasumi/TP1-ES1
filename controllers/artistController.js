@@ -11,12 +11,12 @@ router.get('/create',
 );
 
 router.post('/',
-  objectFilter(['body'], ['name', 'musicalGender', 'country', 'image']),
+  objectFilter(['body'], ['name', 'musicalGenre', 'country', 'image']),
   artistValidate('create'),
   async (req, res) => {
     const artist = {
       name: req.body.name,
-      musicalGender: req.body.musicalGender,
+      musicalGenre: req.body.musicalGenre,
       country: req.body.country,
       image: req.body.image,
     };
@@ -46,8 +46,8 @@ router.get('/:id',
   },
 );
 
-router.put('update/:id',
-  objectFilter(['body'], ['name', 'musicalGender', 'country', 'image']),
+router.post('/update',
+  objectFilter(['body'], ['name', 'musicalGenre', 'country', 'image']),
   artistValidate('update'),
   async (req, res) => {
     const {id} = req.body;
@@ -60,9 +60,9 @@ router.put('update/:id',
   },
 );
 
-router.post('/delete/:id',
+router.post('/delete/',
   async (req, res) => {
-    const artist = await Artist.findByPk(req.params.id);
+    const artist = await Artist.findByPk(req.body.id);
     if (!artist) res.status(404).json('Artista não encontrado').end();
     else {
       await artist.destroy();
