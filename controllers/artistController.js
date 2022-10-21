@@ -39,10 +39,7 @@ router.get('/:id',
   async (req, res) => {
     const artist = await Artist.findByPk(req.params.id, {include: Album});
     if (!artist) res.status(404).json('Artista não encontrado').end();
-    else {
-      artist.Albums = artist.Albums.map((album) => album.dataValues);
-      res.render('artist', {artist});
-    }
+    else res.render('artist', {artist});
   },
 );
 
@@ -60,7 +57,7 @@ router.post('/update',
   },
 );
 
-router.post('/delete/',
+router.post('/delete',
   async (req, res) => {
     const artist = await Artist.findByPk(req.body.id);
     if (!artist) res.status(404).json('Artista não encontrado').end();
