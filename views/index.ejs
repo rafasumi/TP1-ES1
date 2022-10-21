@@ -1,111 +1,109 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <%- include('partials/stylehead') -%>
-    
-    <!-- Arquivos CSS de estilização da página -->
-    <link rel="stylesheet" href="/css/index.css">
-    
-    <title>Rate.io - Página Inicial</title>
-  </head>
 
-  <body id="page-top">
-    <%- include('partials/navbar') -%>
-    
-    <!-- Masthead-->
-    <header class="masthead">
-        <div class="container px-4 px-lg-5 h-100">
-            <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                <div class="col-lg-8 align-self-end">
-                    <h1 class="text-white font-weight-bold">O Maior Site para Críticas e Avaliações de Álbuns</h1>
-                    <hr class="divider border-0" />
-                </div>
-                <div class="col-lg-8 align-self-baseline">
-                    <p class="text-white-75 mb-5">Comece agora a avaliar para suas músicas e artistas favoritos (ou mais odiados)! Compartilhe suas opiniões com o mundo e veja o que outras pessoas acharam!</p>
-                    <a class="btn btn-primary btn-xl border-0" href="#sobre">Saiba Mais</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- About-->
-    <section class="page-section bg-about" id="sobre">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="text-white mt-0">Quem Somos?</h2>
-                    <hr class="divider divider-light border-0" />
-                    <p class="text-white-75 mb-4">Nosso site é um lugar para avaliar a artistas e músicas de todo lugar! Se a música ou o artista ainda não estão na plataforma, sinta-se livre para adicioná-lo!</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<head>
+  <%- include('partials/stylehead') -%>
 
-    <!-- Preview Álbuns-->
-    <section class="page-section" id="albuns">
-        <div class="container px-4 px-lg-5">
-            <h2 class="text-center mt-0">Álbuns do Momento</h2>
-            <hr class="album-divider border-0" />
-            <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
-              <% albums.forEach(album => { %>
-                <div class="mx-2 card" style="width: 18rem;">
-                  <img src=<%= album.image %>  class="card-img-top pt-4 pb-2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title"><%- album.name %> </h5>
-                    <div class="row g-2 mb-3 align-items-center">
-                      <div class="col-auto">
-                        <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
-                      </div>
-                      <div class="col-auto rating" id="inputRating">
-                        <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                      </div>
-                    </div>
-                    <a href="/album/<%= album.id %> " class="btn btn-secondary border-0">Ver detalhes</a>
-                  </div>
-                </div>
-              <% }) %>
-            </div>
-        </div>
-    </section>
+  <!-- Arquivos CSS de estilização da página -->
+  <link rel="stylesheet" href="/css/index.css">
 
-    <div class="divider div-transparent div-arrow-down"></div>
-    
-    <!-- Preview Artistas-->
-    <section class="page-section" id="artistas">
-        <div class="container px-4 px-lg-5">
-            <h2 class="text-center mt-0">Artistas do Momento</h2>
-            <hr class="artista-divider border-0" />
-            <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
-              <% artists.forEach(artist => { %>
-                <div class="mx-2 card" style="width: 18rem;">
-                  <img src=<%= artist.image %>  class="card-img-top pt-4 pb-2" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title"><%- artist.name %> </h5>
-                    <div class="row g-2 mb-3 align-items-center">
-                      <div class="col-auto">
-                        <label for="inputRating" class="col-form-label text-muted card-text">Nota Média:</label>
-                      </div>
-                      <div class="col-auto rating" id="inputRating">
-                        <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                      </div>
-                    </div>
-                    <div class="rating">
-                      
-                    </div>
-                    <a href="/artist/<%= artist.id %> " class="btn btn-success border-0">Ver detalhes</a>
-                  </div>
-                </div>
-              <% }) %>
-            </div>
+  <title>Rate.io - Página Inicial</title>
+</head>
+
+<body id="page-top">
+  <%- include('partials/navbar') -%>
+
+  <!-- Masthead-->
+  <header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+      <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-8 align-self-end">
+          <h1 class="text-white font-weight-bold">O Maior Site para Críticas e Avaliações de Álbuns</h1>
+          <hr class="divider border-0" />
         </div>
-    </section>
-    <%- include('partials/footer') -%>
-  </body>
+        <div class="col-lg-8 align-self-baseline">
+          <p class="text-white-75 mb-5">Comece agora a avaliar para suas músicas e artistas favoritos (ou mais odiados)!
+            Compartilhe suas opiniões com o mundo e veja o que outras pessoas acharam!</p>
+          <a class="btn btn-primary btn-xl border-0" href="#sobre">Saiba Mais</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- About-->
+  <section class="page-section bg-about" id="sobre">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="text-white mt-0">Quem Somos?</h2>
+          <hr class="divider divider-light border-0" />
+          <p class="text-white-75 mb-4">Nosso site é um lugar para avaliar a artistas e músicas de todo lugar! Se a
+            música ou o artista ainda não estão na plataforma, sinta-se livre para adicioná-lo!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preview Álbuns-->
+  <section class="page-section" id="albuns">
+    <div class="container px-4 px-lg-5">
+      <h2 class="text-center mt-0">Álbuns do Momento</h2>
+      <hr class="album-divider border-0" />
+      <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
+        <% albums.forEach(album => { %>
+        <div class="mx-2 card" style="width: 18rem;">
+          <img src=<%= album.image %> class="card-img-top mt-4 py-2" alt="...">
+          <div class="card-body">
+            <h5 class="card-title mb-3"><%- album.name %> </h5>
+            <div class="row g-2 mb-3 align-items-center">
+              <h6 class="card-title">
+                <% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
+                <i class="fa fa-star checked" aria-hidden="true"></i>
+                <% } %>
+                <% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
+                <i class="fa fa-star unchecked" aria-hidden="true"></i>
+                <% } %>
+                4.6
+              </h6>
+            </div>
+            <a href="/album/<%= album.id %> " class="btn btn-secondary border-0">Ver detalhes</a>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider div-transparent div-arrow-down"></div>
+
+  <!-- Preview Artistas-->
+  <section class="page-section" id="artistas">
+    <div class="container px-4 px-lg-5">
+      <h2 class="text-center mt-0">Artistas do Momento</h2>
+      <hr class="artista-divider border-0" />
+      <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
+        <% artists.forEach(artist => { %>
+        <div class="mx-2 card" style="width: 18rem;">
+          <img src=<%= artist.image %> class="card-img-top mt-4 py-2" alt="...">
+          <div class="card-body">
+            <h5 class="card-title mb-3"><%- artist.name %> </h5>
+            <div class="row g-2 mb-3 align-items-center">
+              <h6 class="card-title">
+                <% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
+                <i class="fa fa-star checked" aria-hidden="true"></i>
+                <% } %>
+                <% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
+                <i class="fa fa-star unchecked" aria-hidden="true"></i>
+                <% } %>
+                4.6
+              </h6>
+            </div>
+            <a href="/artist/<%= artist.id %> " class="btn btn-success border-0">Ver detalhes</a>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+  </section>
+  <%- include('partials/footer') -%>
+</body>
+
 </html>

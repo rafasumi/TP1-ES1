@@ -130,6 +130,7 @@ body{
 
 .img-album{
   max-width: 18rem;
+  border-radius: 8%;
 }
 
 .registration-form{

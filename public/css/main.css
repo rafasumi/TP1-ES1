@@ -127,3 +127,11 @@ p, .p, h6, .h6, h5, .h5, h4, .h4, h3, .h3 {
 		color: #f4623a;
 	}
 }
+
+.checked{
+	color: orange;
+  }
+  
+  .unchecked{
+	color: black;
+  }

@@ -16,11 +16,7 @@
 
 .link:hover {
   color: #D62828;
-}
-
-.card-body{
-  text-align: left !important;
-}
+} 
 
 .btn-secondary:hover {
     background-color: #D62828 !important;

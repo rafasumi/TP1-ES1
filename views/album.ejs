@@ -21,21 +21,31 @@
             <img src=<%= album.image %> class="img-album" alt="...">
           </div>
           <div class="text-center row">
-            <h5 class="card-title"><strong><%- album.name %></strong></h5>
-            <h6 class="card-title my-3"><strong><%- album.Artist.name %></strong></h6>
+            <h4 class="card-title"><strong><%- album.name %></strong></h4>
+            <h6 class="card-title my-3"><strong>Artista: </strong><%- album.Artist.name %></h6>
             <h6 class=""><strong>Ano: </strong><%- album.year %></h6>
-            <div class="row d-flex justify-content-center">
-              <div class="col-auto">
-                <h6 for="inputRating" class="col-form-label"><strong>Nota Média:</strong></h6>
-              </div>
-              <div class="col-auto rating-small" id="inputRating">
-                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-              </div>
+            <div class="d-flex text-center justify-content-center mt-2">
+              <h4 class="card-title mx-2">
+                <% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
+                <i class="fa fa-star checked" aria-hidden="true"></i>
+                <% } %>
+                <% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
+                <i class="fa fa-star unchecked" aria-hidden="true"></i>
+                <% } %>
+              </h4>
+              <h4 class="mx-1">4.6</h4>
             </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary border-0 w-25 mx-2 mt-3" data-bs-toggle="modal"
+              data-bs-target="#editar">
+              Editar
+            </button>
+            <button type="button" class="btn btn-secondary border-0 w-25 mx-2 mt-3" data-bs-toggle="modal"
+              data-bs-target="#excluir">
+              Excluir
+            </button>
+
           </div>
         </div>
       </div>
@@ -49,47 +59,39 @@
               <div class="">
                 <div class="card shadow-0 border-0">
                   <div class="card-body p-4">
+                    <h2 class="pb-4">Avaliações do Álbum</h2>
                     <button type="button" class="btn btn-secondary button-album border-0 mx-2 mb-4"
                       data-bs-toggle="modal" data-bs-target="#avaliar">
                       Avaliar Álbum
                     </button>
-                    <button type="button" class="btn btn-secondary button-album border-0 mx-2 mb-4"
-                      data-bs-toggle="modal" data-bs-target="#editar">
-                      Editar Álbum
-                    </button>
-                    <button type="button" class="btn btn-secondary button-album border-0 mx-2 mb-4"
-                      data-bs-toggle="modal" data-bs-target="#excluir">
-                      Excluir Álbum
-                    </button>
                     <% if (album.Ratings.length > 0) { %>
-                      <% album.Ratings.forEach(rating => { %>
-                        <div class="card mb-4 border-0 comment">
-                          <div class="card-body">
-                            <p class="text-start"><%-rating.comment%> </p>
-                            <div class="d-flex justify-content-between">
-                              <div class="d-flex flex-row align-items-center">
-                                <p class="small mb-0 ms-2"><strong>– <%-rating.username%> </strong></p>
-                              </div>
-                              <div class="d-flex flex-row align-items-center">
-                                <div class="row d-flex justify-content-center">
-                                  <div class="col-auto">
-                                    <h6 for="inputRating" class="col-form-label"><strong>Nota:</strong></h6>
-                                  </div>
-                                  <div class="col-auto rating-small" id="inputRating">
-                                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                  </div>
-                                </div>
-                              </div>
+                    <% album.Ratings.forEach(rating => { %>
+                    <div class="card mb-4 border-0 comment">
+                      <div class="card-body">
+                        <p class="text-start"><%-rating.comment%> </p>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <p class="small mb-0 ms-2"><strong>– <%-rating.username%> </strong></p>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div class="d-flex text-center justify-content-center mt-2">
+                              <h6 class="mx-2">
+                                <% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
+                                <i class="fa fa-star checked" aria-hidden="true"></i>
+                                <% } %>
+                                <% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
+                                <i class="fa fa-star unchecked" aria-hidden="true"></i>
+                                <% } %>
+                                4.6
+                              </h6>
                             </div>
                           </div>
                         </div>
-                      <% }) %>
+                      </div>
+                    </div>
+                    <% }) %>
                     <% } else { %>
-                      <p><strong>Este artista ainda não possui álbuns cadastrados</strong></p>
+                    <p><strong>Este artista ainda não possui álbuns cadastrados</strong></p>
                     <% } %>
                   </div>
                 </div>
@@ -98,7 +100,8 @@
           </div>
         </div>
       </div>
-    </section>
+  </div>
+  </section>
   </div>
 
   <!-- Modal para Avaliar Álbum-->
@@ -111,7 +114,7 @@
         <div class="modal-body">
           <div class="registration-form pt-0">
             <form action="/rating" method="POST">
-              <input type="hidden" class="form-control item" name="albumId" id="albumId" value=<%=album.id%> >
+              <input type="hidden" class="form-control item" name="albumId" id="albumId" value=<%=album.id%>>
               <h2 class="pb-4">Avaliar</h2>
               <div class="form-floating">
                 <input type="text" class="form-control item" name="username" id="username">
@@ -178,7 +181,7 @@
                 <select class="form-select item" name="artist" id="artist">
                   <option selected value="">Selecione</option>
                   <% artists.forEach(artist => { %>
-                    <option value=<%= artist.id %>><%- artist.name %></option>
+                  <option value=<%= artist.id %>><%- artist.name %></option>
                   <% }) %>
                 </select>
                 <label for="artist">Nome do artista</label>

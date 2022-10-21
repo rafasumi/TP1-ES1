@@ -24,29 +24,27 @@
 						<h4 class="card-title"><strong><%- artist.name %></strong></h4>
 						<h6 class="card-title"><strong>Gênero musical: </strong><%- artist.musicalGenre %></h6>
 						<h6 class="card-title"><strong>País de origem: </strong><%- artist.country %></h6>
+						<div class="d-flex text-center justify-content-center mt-2">
+							<h4 class="card-title mx-2">
+								<% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
+									<i class="fa fa-star checked" aria-hidden="true"></i>
+								<% } %>
+								<% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
+									<i class="fa fa-star unchecked" aria-hidden="true"></i>
+								<% } %>
+							</h4>
+							<h4 class="mx-1">4.6</h4>
+						</div> 
 					</div>
 					<div class="row d-flex justify-content-center">
-						<div class="col-auto">
-							<h6 for="inputRating" class="col-form-label"><strong>Nota Média:</strong></h6>
-						</div>
-						<div class="col-auto rating-small" id="inputRating">
-							<input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-							<input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-							<input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-							<input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-							<input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-						</div>
-					</div>
-					<div class="row d-flex justify-content-center">
-						<button type="button" class="btn btn-secondary border-0 w-25 mx-2 my-3" data-bs-toggle="modal"
+						<button type="button" class="btn btn-secondary border-0 w-25 mx-2 mt-3" data-bs-toggle="modal"
 							data-bs-target="#editar">
 							Editar
 						</button>
-						<button type="button" class="btn btn-secondary border-0 w-25 mx-2 my-3" data-bs-toggle="modal"
+						<button type="button" class="btn btn-secondary border-0 w-25 mx-2 mt-3" data-bs-toggle="modal"
 							data-bs-target="#excluir">
 							Excluir
 						</button>
-
 					</div>
 				</div>
 			</div>
@@ -64,13 +62,22 @@
 										<img src=<%= album.image %>  class="card-img-top mt-2">
 										<div class="card-body">
 											<h5 class="card-title"><%- album.name %> </h5>
-											<h6 class="card-title"><%- album.year %> | 5.0 ☆</h6>
+											<h6 class=""><%- album.year %> </h6>
+											<h6 class="card-title">
+												<% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
+													<i class="fa fa-star checked" aria-hidden="true"></i>
+												<% } %>
+												<% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
+													<i class="fa fa-star unchecked" aria-hidden="true"></i>
+												<% } %>
+												4.6
+											</h6>
 											<a type="button" class="btn btn-secondary border-0" href="/album/<%= album.id %> ">Ver avaliações</a>
 										</div>
 									</div>
 								<% }) %>
 							<% } else { %>
-								<p><strong>Este artista ainda não possui álbuns cadastrados</strong></p>
+								<h5 class ="mt-2">Este artista ainda não possui álbuns cadastrados.</h5>
 							<% } %>
 						</div>
 					</div>
