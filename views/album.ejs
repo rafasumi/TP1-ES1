@@ -25,15 +25,20 @@
             <h6 class="card-title my-3"><strong>Artista: </strong><%- album.Artist.name %></h6>
             <h6 class=""><strong>Ano: </strong><%- album.year %></h6>
             <div class="d-flex text-center justify-content-center mt-2">
-              <h4 class="card-title mx-2">
-                <% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
-                <i class="fa fa-star checked" aria-hidden="true"></i>
-                <% } %>
-                <% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
-                <i class="fa fa-star unchecked" aria-hidden="true"></i>
-                <% } %>
-              </h4>
-              <h4 class="mx-1">4.6</h4>
+              <% if (album.dataValues.avgRating) { %>
+                <h4 class="card-title mx-2">
+                  <% const averageRating = album.dataValues.avgRating.toFixed(2) %>
+                  <% for (let i = 1; i <= Math.floor(averageRating); ++i) { %>
+                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                  <% } %>
+                  <% for (let i = 1; i <= Math.ceil(5 - averageRating); ++i) { %>
+                    <i class="fa fa-star unchecked" aria-hidden="true"></i>
+                  <% } %>
+                </h4>
+                <h4 class="mx-1"><%- averageRating %></h4>
+              <% } else { %>
+                <h4 class="mx-1">-</h4>
+              <% } %>
             </div>
           </div>
           <div class="row d-flex justify-content-center">
@@ -64,8 +69,8 @@
                       data-bs-toggle="modal" data-bs-target="#avaliar">
                       Avaliar Álbum
                     </button>
-                    <% if (album.Ratings.length > 0) { %>
-                    <% album.Ratings.forEach(rating => { %>
+                    <% if (ratings.length > 0) { %>
+                    <% ratings.forEach(rating => { %>
                     <div class="card mb-4 border-0 comment">
                       <div class="card-body">
                         <p class="text-start"><%-rating.comment%> </p>
@@ -76,13 +81,13 @@
                           <div class="d-flex flex-row align-items-center">
                             <div class="d-flex text-center justify-content-center mt-2">
                               <h6 class="mx-2">
-                                <% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
+                                <% for (let i = 1; i <= Math.floor(rating.value); ++i) { %>
                                 <i class="fa fa-star checked" aria-hidden="true"></i>
                                 <% } %>
-                                <% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
+                                <% for (let i = 1; i <= Math.ceil(5 - rating.value); ++i) { %>
                                 <i class="fa fa-star unchecked" aria-hidden="true"></i>
                                 <% } %>
-                                4.6
+                                <%- rating.value %> 
                               </h6>
                             </div>
                           </div>
@@ -91,7 +96,7 @@
                     </div>
                     <% }) %>
                     <% } else { %>
-                    <p><strong>Este artista ainda não possui álbuns cadastrados</strong></p>
+                    <p><strong>Este artista ainda não possui avaliações</strong></p>
                     <% } %>
                   </div>
                 </div>

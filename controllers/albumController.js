@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const {Sequelize} = require('sequelize');
 
 const Album = require('../models/Album');
 const Artist = require('../models/Artist');
@@ -6,8 +7,6 @@ const Rating = require('../models/Rating');
 
 const objectFilter = require('../middlewares/objectFilter');
 const albumValidate = require('../middlewares/albumValidator');
-
-const getAverageRating = require('./utils');
 
 router.get('/create',
   async (req, res) => {
@@ -45,35 +44,28 @@ router.get('/all',
   },
 );
 
-router.get('/rating',
-  async (req, res) => {
-    const {id} = req.body;
-
-    const album = await Album.findByPk(id, {include: [Artist, Rating]});
-    if (!album) res.status(404).json('Álbum não encontrado').end();
-
-    // const artists = await Artist.findAll();
-    // if (!artists) res.status(404).json('Artistas não encontrados').end();
-
-    else {
-      const averageRating = await getAverageRating(id);
-
-      res.status(200).json(averageRating).end();
-
-    // Se quiser renderizar uma página com as avaliações do álbum
-    // só retirar os comments da rota
-    // res.render('album', {album, artists});
-    }
-  },
-);
-
 router.get('/:id',
   async (req, res) => {
-    const album = await Album.findByPk(req.params.id,
-      {include: [Artist, Rating]});
-    const artists = await Artist.findAll();
+    const {id} = req.params;
+    const album = await Album.findByPk(id,
+      {
+        attributes: [
+          [Sequelize.fn('AVG', Sequelize.col('Ratings.value')), 'avgRating'],
+          'id',
+          'name',
+          'image',
+          'year',
+        ],
+        include: [Artist, Rating],
+        group: ['Ratings.albumId'],
+      },
+    );
     if (!album) res.status(404).json('Álbum não encontrado').end();
-    else res.render('album', {album, artists});
+    else {
+      const artists = await Artist.findAll();
+      const ratings = await Rating.findAll({where: {albumId: id}});
+      res.render('album', {album, artists, ratings});
+    }
   },
 );
 
