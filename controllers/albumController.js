@@ -12,7 +12,7 @@ const getAverageRating = require('./utils');
 router.get('/create',
   async (req, res) => {
     const artists = await Artist.findAll();
-    if (!artists) res.status(404).json('Artistas não encontrados').end();
+    if (!artists) res.status(404).render('404', {erro: 'Artistas não encontrados.'});
     else res.render('createAlbum', {artists});
   },
 );
@@ -29,7 +29,7 @@ router.post('/',
     };
 
     const artist = await Artist.findByPk(album.artistId);
-    if (!artist) res.status(404).json('Artista não encontrado').end();
+    if (!artist) res.status(404).render('404', {erro: 'Artista não encontrado.'});
     else {
       const {id} = await Album.create(album);
       res.redirect(`/album/${id}`);
@@ -40,7 +40,7 @@ router.post('/',
 router.get('/all',
   async (req, res) => {
     const albums = await Album.findAll({include: Artist});
-    if (!albums) res.status(404).json('Álbuns não encontrados').end();
+    if (!albums) res.status(404).render('404', {erro: 'Álbuns não encontrados.'});
     else res.render('viewAlbums', {albums});
   },
 );
@@ -50,7 +50,7 @@ router.get('/rating',
     const {id} = req.body;
 
     const album = await Album.findByPk(id, {include: [Artist, Rating]});
-    if (!album) res.status(404).json('Álbum não encontrado').end();
+    if (!album) res.status(404).render('404', {erro: 'Álbum não encontrado.'});
 
     // const artists = await Artist.findAll();
     // if (!artists) res.status(404).json('Artistas não encontrados').end();
@@ -72,7 +72,7 @@ router.get('/:id',
     const album = await Album.findByPk(req.params.id,
       {include: [Artist, Rating]});
     const artists = await Artist.findAll();
-    if (!album) res.status(404).json('Álbum não encontrado').end();
+    if (!album) res.status(404).render('404', {erro: 'Álbum não encontrado.'});
     else res.render('album', {album, artists});
   },
 );
@@ -83,7 +83,7 @@ router.post('/update',
   async (req, res) => {
     const {id} = req.body;
     const album = await Album.findByPk(id);
-    if (!album) res.status(404).json('Álbum não encontrado').end();
+    if (!album) res.status(404).render('404', {erro: 'Álbum não encontrado.'});
     else {
       await album.update(req.body);
       res.redirect(`/album/${id}`);
@@ -94,7 +94,7 @@ router.post('/update',
 router.post('/delete',
   async (req, res) => {
     const album = await Album.findByPk(req.body.id);
-    if (!album) res.status(404).json('Álbum não encontrado').end();
+    if (!album) res.status(404).render('404', {erro: 'Álbum não encontrado.'});
     else {
       await album.destroy();
       res.redirect('/album/all');

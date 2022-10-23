@@ -20,10 +20,9 @@ router.post('/',
       }},
     );
 
-    if (!album) res.status(404).json('Álbum não encontrado').end();
+    if (!album) res.status(404).render('404', {erro: 'Álbum não encontrado.'});
     else if (ratingWithSameEmail) {
-      res.status(400).json(
-        'Já existe uma avaliação associada a esse e-mail para tal album').end();
+      res.status(400).json('Já existe uma avaliação associada a esse e-mail para tal album.').end();
     } else {
       const rating = {
         value: req.body.value,
