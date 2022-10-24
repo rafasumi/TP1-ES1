@@ -26,14 +26,14 @@
 						<h6 class="card-title"><strong>País de origem: </strong><%- artist.country %></h6>
 						<div class="d-flex text-center justify-content-center mt-2">
 							<h4 class="card-title mx-2">
-								<% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
+								<% for (let i = 1; i <= Math.floor(artist.avgRating); ++i) { %>
 									<i class="fa fa-star checked" aria-hidden="true"></i>
 								<% } %>
-								<% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
+								<% for (let i = 1; i <= Math.ceil(5 - artist.avgRating); ++i) { %>
 									<i class="fa fa-star unchecked" aria-hidden="true"></i>
 								<% } %>
 							</h4>
-							<h4 class="mx-1">4.6</h4>
+							<h4 class="mx-1"><%-artist.avgRating %></h4>
 						</div> 
 					</div>
 					<div class="row d-flex justify-content-center">
@@ -64,13 +64,13 @@
 											<h5 class="card-title"><%- album.name %> </h5>
 											<h6 class=""><%- album.year %> </h6>
 											<h6 class="card-title">
-												<% for (let i = 1; i <= Math.floor(4.6); ++i) { %>
+												<% for (let i = 1; i <= Math.floor(album.getDataValue('avgAlbumRating')); ++i) { %>
 													<i class="fa fa-star checked" aria-hidden="true"></i>
 												<% } %>
-												<% for (let i = 1; i <= Math.ceil(5 - 4.6); ++i) { %>
+												<% for (let i = 1; i <= Math.ceil(5 - album.getDataValue('avgAlbumRating')); ++i) { %>
 													<i class="fa fa-star unchecked" aria-hidden="true"></i>
 												<% } %>
-												4.6
+												<%-album.getDataValue('avgAlbumRating') %>
 											</h6>
 											<a type="button" class="btn btn-secondary border-0" href="/album/<%= album.id %> ">Ver avaliações</a>
 										</div>

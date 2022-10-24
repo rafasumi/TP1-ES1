@@ -11,7 +11,8 @@ const albumValidate = require('../middlewares/albumValidator');
 router.get('/create',
   async (req, res) => {
     const artists = await Artist.findAll();
-    if (!artists) res.status(404).render('404', {erro: 'Artistas não encontrados.'});
+    if (!artists)
+      res.status(404).render('404', {erro: 'Artistas não encontrados.'});
     else res.render('createAlbum', {artists});
   },
 );
@@ -28,7 +29,8 @@ router.post('/',
     };
 
     const artist = await Artist.findByPk(album.artistId);
-    if (!artist) res.status(404).render('404', {erro: 'Artista não encontrado.'});
+    if (!artist)
+      res.status(404).render('404', {erro: 'Artista não encontrado.'});
     else {
       const {id} = await Album.create(album);
       res.redirect(`/album/${id}`);
@@ -38,8 +40,21 @@ router.post('/',
 
 router.get('/all',
   async (req, res) => {
-    const albums = await Album.findAll({include: Artist});
-    if (!albums) res.status(404).render('404', {erro: 'Álbuns não encontrados.'});
+    const albums = await Album.findAll(
+      {
+        attributes: [
+          [Sequelize.fn('AVG', Sequelize.col('Ratings.value')), 'avgRating'],
+          'id',
+          'name',
+          'image',
+          'year',
+        ],
+        include: [Artist, Rating],
+        group: ['Ratings.albumId'],
+      },
+    );
+    if (!albums)
+      res.status(404).render('404', {erro: 'Álbuns não encontrados.'});
     else res.render('viewAlbums', {albums});
   },
 );
@@ -75,7 +90,8 @@ router.post('/update',
   async (req, res) => {
     const {id} = req.body;
     const album = await Album.findByPk(id);
-    if (!album) res.status(404).render('404', {erro: 'Álbum não encontrado.'});
+    if (!album)
+      res.status(404).render('404', {erro: 'Álbum não encontrado.'});
     else {
       await album.update(req.body);
       res.redirect(`/album/${id}`);
@@ -86,7 +102,8 @@ router.post('/update',
 router.post('/delete',
   async (req, res) => {
     const album = await Album.findByPk(req.body.id);
-    if (!album) res.status(404).render('404', {erro: 'Álbum não encontrado.'});
+    if (!album)
+      res.status(404).render('404', {erro: 'Álbum não encontrado.'});
     else {
       await album.destroy();
       res.redirect('/album/all');

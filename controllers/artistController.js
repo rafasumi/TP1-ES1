@@ -5,7 +5,9 @@ const Album = require('../models/Album');
 const objectFilter = require('../middlewares/objectFilter');
 const artistValidate = require('../middlewares/artistValidator');
 
-const getAverageRating = require('./utils');
+const {Sequelize} = require('sequelize');
+const Rating = require('../models/Rating');
+const {getAverageArtistRating} = require('./utils');
 
 router.get('/create',
   (req, res) => {
@@ -32,40 +34,59 @@ router.post('/',
 
 router.get('/all',
   async (req, res) => {
-    const artists = await Artist.findAll();
-    if (!artists) res.status(404).render('404', {erro: 'Artistas não encontrados.'});
-    else res.render('viewArtists', {artists});
-  },
-);
-
-router.get('/averageAlbumRatings',
-  async (req, res) => {
-    const {artistId} = req.body;
-
-    const albums = await Album.findAll({where: {artistId: artistId}});
-
-    if (!albums.length) {
-      res.status(404).render('404', {erro: 'Álbuns não encontrados para esse artista.'});
-    } else {
-      let sum = 0;
-      const length = albums.length;
-
-      for (let i = 0; i < length; i++) {
-        const aux = parseFloat(
-          await getAverageRating(albums[i].getDataValue('id')));
-        sum += aux;
-      }
-
-      res.status(200).json((sum / length).toFixed(2)).end();
+    const artists = await Artist.findAll(
+      {
+        include: [{
+          model: Album,
+          attributes: [
+            [Sequelize.fn(
+              'AVG', Sequelize.col('Albums.Ratings.value')), 'avgAlbumRating'],
+            'id',
+            'name',
+            'image',
+          ],
+          include: [Rating],
+          group: ['Ratings.albumId'],
+        }],
+        group: ['Albums.id'],
+      },
+    );
+    if (!artists)
+      res.status(404).render('404', {erro: 'Artistas não encontrados.'});
+    else {
+      artists.forEach((artist) => {
+        artist.avgRating = getAverageArtistRating(artist.Albums);
+      });
+      res.render('viewArtists', {artists});
     }
   },
 );
 
 router.get('/:id',
   async (req, res) => {
-    const artist = await Artist.findByPk(req.params.id, {include: Album});
-    if (!artist) res.status(404).render('404', {erro: 'Artista não encontrado.'});
-    else res.render('artist', {artist});
+    const artist = await Artist.findByPk(req.params.id,
+      {
+        include: [{
+          model: Album,
+          attributes: [
+            [Sequelize.fn(
+              'AVG', Sequelize.col('Albums.Ratings.value')), 'avgAlbumRating'],
+            'id',
+            'name',
+            'image',
+          ],
+          include: [Rating],
+          group: ['Ratings.albumId'],
+        }],
+        group: ['Albums.id'],
+      },
+    );
+    if (!artist)
+      res.status(404).render('404', {erro: 'Artista não encontrado.'});
+    else {
+      artist.avgRating = getAverageArtistRating(artist.Albums);
+      res.render('artist', {artist});
+    }
   },
 );
 
@@ -75,7 +96,8 @@ router.post('/update',
   async (req, res) => {
     const {id} = req.body;
     const artist = await Artist.findByPk(id);
-    if (!artist) res.status(404).render('404', {erro: 'Artista não encontrado.'});
+    if (!artist)
+      res.status(404).render('404', {erro: 'Artista não encontrado.'});
     else {
       await artist.update(req.body);
       res.redirect(`/artist/${id}`);
@@ -86,7 +108,8 @@ router.post('/update',
 router.post('/delete',
   async (req, res) => {
     const artist = await Artist.findByPk(req.body.id);
-    if (!artist) res.status(404).render('404', {erro: 'Artista não encontrado.'});
+    if (!artist) res.status(404).render(
+      '404', {erro: 'Artista não encontrado.'});
     else {
       await artist.destroy();
       res.redirect('/artist/all');
