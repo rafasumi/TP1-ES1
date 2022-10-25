@@ -48,7 +48,7 @@ router.get('/all',
           include: [Rating],
           group: ['Ratings.albumId'],
         }],
-        group: ['Albums.id'],
+        group: ['Artists.id'],
       },
     );
     if (!artists)

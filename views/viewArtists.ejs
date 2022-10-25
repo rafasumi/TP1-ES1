@@ -38,17 +38,21 @@
               <h6 class="card-title my-3"><b>Gênero musical: </b><%- artist.musicalGenre %></h6>
               <h6 class="mb-3"><b>País: </b><%- artist.country %></h6>
               <div class="row g-2 align-items-center">
-                <h6 class="card-title">
-                  <% for (let i = 1; i <= Math.floor(artist.avgRating); ++i) { %>
-                  <i class="fa fa-star checked" aria-hidden="true"></i>
-                  <% } %>
-                  <% for (let i = 1; i <= Math.ceil(5 - artist.avgRating); ++i) { %>
-                  <i class="fa fa-star unchecked" aria-hidden="true"></i>
-                  <% } %>
-                  <%-artist.avgRating %>
-                </h6>
+                <% if (artist.avgRating && !isNaN(artist.avgRating)) { %>
+                  <h6 class="card-title">
+                    <% for (let i = 1; i <= Math.floor(artist.avgRating); ++i) { %>
+                      <i class="fa fa-star checked" aria-hidden="true"></i>
+                    <% } %>
+                    <% for (let i = 1; i <= Math.ceil(5 - artist.avgRating); ++i) { %>
+                      <i class="fa fa-star unchecked" aria-hidden="true"></i>
+                    <% } %>
+                    <%- artist.avgRating %>
+                  </h6>
+                  <a type="button" class="btn btn-secondary border-0 my-2" href="/artist/<%- artist.id %>">Ver artista</a>
+                <% } else { %>
+                  <h6 class="card-title">-</h6>
+                <% } %>
               </div>
-              <a type="button" class="btn btn-secondary border-0 my-2" href="/artist/<%- artist.id %>">Ver artista</a>
             </div>
           </div>
         <% }) %>

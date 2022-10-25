@@ -53,7 +53,7 @@ app.get('/', async (req, res) => {
         include: [Rating],
         group: ['Ratings.albumId'],
       }],
-      group: ['Albums.id'],
+      group: ['Artists.id'],
     },
   );
   if (!artists)

@@ -25,9 +25,9 @@
             <h6 class="card-title my-3"><strong>Artista: </strong><%- album.Artist.name %></h6>
             <h6 class=""><strong>Ano: </strong><%- album.year %></h6>
             <div class="d-flex text-center justify-content-center mt-2">
-              <% if (album.dataValues.avgRating) { %>
+              <% if (album.getDataValue('avgRating')) { %>
                 <h4 class="card-title mx-2">
-                  <% const averageRating = album.dataValues.avgRating.toFixed(2) %>
+                  <% const averageRating = album.getDataValue('avgRating').toFixed(2) %>
                   <% for (let i = 1; i <= Math.floor(averageRating); ++i) { %>
                     <i class="fa fa-star checked" aria-hidden="true"></i>
                   <% } %>
@@ -70,33 +70,33 @@
                       Avaliar Álbum
                     </button>
                     <% if (ratings.length > 0) { %>
-                    <% ratings.forEach(rating => { %>
-                    <div class="card mb-4 border-0 comment">
-                      <div class="card-body">
-                        <p class="text-start"><%-rating.comment%> </p>
-                        <div class="d-flex justify-content-between">
-                          <div class="d-flex flex-row align-items-center">
-                            <p class="small mb-0 ms-2"><strong>– <%-rating.username%> </strong></p>
-                          </div>
-                          <div class="d-flex flex-row align-items-center">
-                            <div class="d-flex text-center justify-content-center mt-2">
-                              <h6 class="mx-2">
-                                <% for (let i = 1; i <= Math.floor(rating.value); ++i) { %>
-                                <i class="fa fa-star checked" aria-hidden="true"></i>
-                                <% } %>
-                                <% for (let i = 1; i <= Math.ceil(5 - rating.value); ++i) { %>
-                                <i class="fa fa-star unchecked" aria-hidden="true"></i>
-                                <% } %>
-                                <%- rating.value %> 
-                              </h6>
+                      <% ratings.forEach(rating => { %>
+                        <div class="card mb-4 border-0 comment">
+                          <div class="card-body">
+                            <p class="text-start"><%-rating.comment%> </p>
+                            <div class="d-flex justify-content-between">
+                              <div class="d-flex flex-row align-items-center">
+                                <p class="small mb-0 ms-2"><strong>– <%-rating.username%> </strong></p>
+                              </div>
+                              <div class="d-flex flex-row align-items-center">
+                                <div class="d-flex text-center justify-content-center mt-2">
+                                  <h6 class="mx-2">
+                                    <% for (let i = 1; i <= Math.floor(rating.value); ++i) { %>
+                                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                                    <% } %>
+                                    <% for (let i = 1; i <= Math.ceil(5 - rating.value); ++i) { %>
+                                    <i class="fa fa-star unchecked" aria-hidden="true"></i>
+                                    <% } %>
+                                    <%- rating.value %> 
+                                  </h6>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <% }) %>
+                      <% }) %>
                     <% } else { %>
-                    <p><strong>Este artista ainda não possui avaliações</strong></p>
+                      <p><strong>Este artista ainda não possui avaliações</strong></p>
                     <% } %>
                   </div>
                 </div>
