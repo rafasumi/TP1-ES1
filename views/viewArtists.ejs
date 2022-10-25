@@ -31,8 +31,8 @@
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
         <% artists.forEach(artist => { %>
-          <div class="mx-2 card" style="width: 18rem;">
-            <img src=<%= artist.image %> class="card-img-top mt-4 mb-2">
+          <div class="mx-2 mb-3 card" style="width: 18rem;">
+            <img src=<%= artist.image %> class="card-img-top mt-4 mb-2" style="max-height: 18rem;">
             <div class="card-body">
               <h4 class="card-title"><b><%- artist.name %></b></h4>
               <h6 class="card-title my-3"><b>Gênero musical: </b><%- artist.musicalGenre %></h6>
@@ -48,10 +48,10 @@
                     <% } %>
                     <%- artist.avgRating %>
                   </h6>
+                  <% } else { %>
+                    <h6 class="card-title">-</h6>
+                    <% } %>
                   <a type="button" class="btn btn-secondary border-0 my-2" href="/artist/<%- artist.id %>">Ver artista</a>
-                <% } else { %>
-                  <h6 class="card-title">-</h6>
-                <% } %>
               </div>
             </div>
           </div>

@@ -13,6 +13,10 @@ p, .p, h6, .h6, h5, .h5, h4, .h4, h3, .h3 {
 	line-height: 1.2;
 }
 
+.page-section {
+	padding: 5rem 0;
+}
+
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
 	background-color: #D62828 !important;
 }

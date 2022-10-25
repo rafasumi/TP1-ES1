@@ -5,9 +5,9 @@
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
 */
 
-/*.card-body{
-  text-align: left !important;
-}*/
+#sobre {
+  padding: 8rem 0;
+}
 
 .album-divider {
   height: 0.2rem;
@@ -82,10 +82,6 @@ html {
 
 .card{
   margin-bottom: 2rem;
-}
-
-.page-section {
-  padding: 8rem 0;
 }
 
 .text-white-75 {
