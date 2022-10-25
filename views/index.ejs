@@ -49,7 +49,7 @@
       <h2 class="text-center mt-0">Álbuns do Momento</h2>
       <hr class="album-divider border-0" />
       <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
-        <% albums.forEach(album => { %>
+        <% albums.slice(-4).forEach(album => { %>
         <div class="mx-2 card" style="width: 18rem;">
           <img src=<%= album.image %> class="card-img-top mt-4 py-2" alt="...">
           <div class="card-body">
@@ -81,9 +81,9 @@
       <h2 class="text-center mt-0">Artistas do Momento</h2>
       <hr class="artista-divider border-0" />
       <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
-        <% artists.forEach(artist => { %>
+        <% artists.slice(-4).forEach(artist => { %>
         <div class="mx-2 card" style="width: 18rem;">
-          <img src=<%= artist.image %> class="card-img-top mt-4 py-2" alt="...">
+          <img src=<%= artist.image %> class="card-img-top mt-4 py-2" style="max-width: 100%;" alt="...">
           <div class="card-body">
             <h5 class="card-title mb-3"><%- artist.name %> </h5>
             <div class="row g-2 mb-3 align-items-center">
@@ -99,8 +99,8 @@
             </div>
             <a href="/artist/<%= artist.id %> " class="btn btn-success border-0">Ver detalhes</a>
           </div>
-          <% }) %>
         </div>
+        <% }) %>
       </div>
   </section>
   <%- include('partials/footer') -%>

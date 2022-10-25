@@ -31,24 +31,16 @@ p, .p, h6, .h6, h5, .h5, h4, .h4, h3, .h3 {
 
 .card-img-top {
 	width: 100%;
-	height: 20vw;
+	height: 100%;
 	object-fit: cover;
 	border-radius: 10%;
 
 }
 
-/*.navbar{
-    margin-bottom: 3vh;
-}*/
-
 @media (max-width: 768px) {
 	.card-img-top {
 		height: 200px;
 	}
-
-	/*.navbar{
-        margin-bottom: 5vh;
-    }*/
 }
 
 .navbar-nav {
@@ -60,7 +52,6 @@ p, .p, h6, .h6, h5, .h5, h4, .h4, h3, .h3 {
 }
 
 #mainNav {
-	/*box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);*/
 	background-color: #fff;
 	transition: background-color 0.2s ease;
 	height: 4rem;
@@ -83,7 +74,6 @@ p, .p, h6, .h6, h5, .h5, h4, .h4, h3, .h3 {
 @media (min-width: 992px) {
 	#mainNav {
 		box-shadow: none;
-		/*background-color: transparent;*/
 	}
 
 	#mainNav .navbar-brand {
@@ -99,9 +89,6 @@ p, .p, h6, .h6, h5, .h5, h4, .h4, h3, .h3 {
 		padding: 0 1rem;
 	}
 
-	/*#mainNav .navbar-nav .nav-item .nav-link:hover {
-      color: #fff;
-    }*/
 	#mainNav .navbar-nav .nav-item:last-child .nav-link {
 		padding-right: 0;
 	}
