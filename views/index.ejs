@@ -50,20 +50,25 @@
       <h2 class="text-center mt-0">Álbuns do Momento</h2>
       <hr class="album-divider border-0" />
       <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
-        <% albums.slice(-4).forEach(album => { %>
+        <% albums.forEach(album => { %>
         <div class="mx-2 card" style="width: 18rem;">
           <img src=<%= album.image %> class="card-img-top mt-4 py-2" alt="...">
           <div class="card-body">
             <h5 class="card-title mb-3"><%- album.name %> </h5>
             <div class="row g-2 mb-3 align-items-center">
               <h6 class="card-title">
-                <% for (let i = 1; i <= Math.floor(album.getDataValue('avgRating')); ++i) { %>
-                <i class="fa fa-star checked" aria-hidden="true"></i>
+                <% if (album.getDataValue('avgRating')) { %>
+                  <% const averageRating = album.getDataValue('avgRating').toFixed(1) %>
+                  <% for (let i = 1; i <= Math.floor(averageRating); ++i) { %>
+                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                  <% } %>
+                  <% for (let i = 1; i <= Math.ceil(5 - averageRating); ++i) { %>
+                    <i class="fa fa-star unchecked" aria-hidden="true"></i>
+                  <% } %>
+                  <%- averageRating %>
+                <% } else { %>
+                  -
                 <% } %>
-                <% for (let i = 1; i <= Math.ceil(5 - album.getDataValue('avgRating')); ++i) { %>
-                <i class="fa fa-star unchecked" aria-hidden="true"></i>
-                <% } %>
-                <%-album.getDataValue('avgRating') %>
               </h6>
             </div>
             <a href="/album/<%= album.id %> " class="btn btn-secondary border-0">Ver detalhes</a>
@@ -82,20 +87,24 @@
       <h2 class="text-center mt-0">Artistas do Momento</h2>
       <hr class="artista-divider border-0" />
       <div class="row gx-4 gx-lg-5 mx-1" id="divCards">
-        <% artists.slice(-4).forEach(artist => { %>
+        <% artists.forEach(artist => { %>
         <div class="mx-2 card" style="width: 18rem;">
           <img src=<%= artist.image %> class="card-img-top mt-4 py-2" style="max-width: 100%;" alt="...">
           <div class="card-body">
             <h5 class="card-title mb-3"><%- artist.name %> </h5>
             <div class="row g-2 mb-3 align-items-center">
               <h6 class="card-title">
-                <% for (let i = 1; i <= Math.floor(artist.avgRating); ++i) { %>
-                <i class="fa fa-star checked" aria-hidden="true"></i>
+                <% if (artist.avgRating && !isNaN(artist.avgRating)) { %>
+                  <% for (let i = 1; i <= Math.floor(artist.avgRating); ++i) { %>
+                    <i class="fa fa-star checked" aria-hidden="true"></i>
+                  <% } %>
+                  <% for (let i = 1; i <= Math.ceil(5 - artist.avgRating); ++i) { %>
+                    <i class="fa fa-star unchecked" aria-hidden="true"></i>
+                  <% } %>
+                  <%- artist.avgRating %>
+                <% } else { %>
+                  -
                 <% } %>
-                <% for (let i = 1; i <= Math.ceil(5 - artist.avgRating); ++i) { %>
-                <i class="fa fa-star unchecked" aria-hidden="true"></i>
-                <% } %>
-                <%-artist.avgRating %>
               </h6>
             </div>
             <a href="/artist/<%= artist.id %> " class="btn btn-success border-0">Ver detalhes</a>

@@ -67,8 +67,8 @@
 										<div class="card-body">
 											<h5 class="card-title"><%- album.name %> </h5>
 											<h6 class=""><%- album.year %> </h6>
-											<% if (album.getDataValue('avgAlbumRating')) { %>
-												<h6 class="card-title mx-2">
+											<h6 class="card-title mx-2">
+												<% if (album.getDataValue('avgAlbumRating')) { %>
 													<% const averageRating = album.getDataValue('avgAlbumRating').toFixed(1) %>
 													<% for (let i = 1; i <= Math.floor(averageRating); ++i) { %>
 														<i class="fa fa-star checked" aria-hidden="true"></i>
@@ -77,11 +77,11 @@
 														<i class="fa fa-star unchecked" aria-hidden="true"></i>
 													<% } %>
 													<%- averageRating %>
-												</h6>
-												<a type="button" class="btn btn-secondary border-0" href="/album/<%= album.id %>">Ver avaliações</a>
-											<% } else { %>
-												<h6 class="card-title mx-2">-</h6>
-											<% } %>
+												<% } else { %>
+													-
+												<% } %>
+											</h6>
+											<a type="button" class="btn btn-secondary border-0" href="/album/<%= album.id %>">Ver avaliações</a>
 										</div>
 									</div>
 								<% }) %>

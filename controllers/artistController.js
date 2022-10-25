@@ -48,13 +48,14 @@ router.get('/all',
           include: [Rating],
           group: ['Ratings.albumId'],
         }],
-        group: ['Artists.id'],
+        group: ['Albums.id'],
       },
     );
     if (!artists)
       res.status(404).render('404', {erro: 'Artistas não encontrados.'});
     else {
       artists.forEach((artist) => {
+        console.log(artist.Albums);
         artist.avgRating = getAverageArtistRating(artist.Albums);
       });
       res.render('viewArtists', {artists});

@@ -32,8 +32,13 @@ app.get('/', async (req, res) => {
         'image',
         'year',
       ],
-      include: [Artist, Rating],
+      include: [
+        {model: Artist, duplicating: false},
+        {model: Rating, duplicating: false},
+      ],
       group: ['Ratings.albumId'],
+      limit: 4,
+      order: [['createdAt', 'DESC']],
     },
   );
   if (!albums)
@@ -43,6 +48,7 @@ app.get('/', async (req, res) => {
     {
       include: [{
         model: Album,
+        duplicating: false,
         attributes: [
           [Sequelize.fn(
             'AVG', Sequelize.col('Albums.Ratings.value')), 'avgAlbumRating'],
@@ -50,10 +56,12 @@ app.get('/', async (req, res) => {
           'name',
           'image',
         ],
-        include: [Rating],
+        include: [{model: Rating, duplicating: false}],
         group: ['Ratings.albumId'],
       }],
-      group: ['Artists.id'],
+      group: ['Albums.id'],
+      limit: 4,
+      order: [['createdAt', 'DESC']],
     },
   );
   if (!artists)

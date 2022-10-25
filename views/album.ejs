@@ -27,7 +27,7 @@
             <div class="d-flex text-center justify-content-center mt-2">
               <% if (album.getDataValue('avgRating')) { %>
                 <h4 class="card-title mx-2">
-                  <% const averageRating = album.getDataValue('avgRating').toFixed(2) %>
+                  <% const averageRating = album.getDataValue('avgRating').toFixed(1) %>
                   <% for (let i = 1; i <= Math.floor(averageRating); ++i) { %>
                     <i class="fa fa-star checked" aria-hidden="true"></i>
                   <% } %>
