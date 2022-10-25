@@ -3,68 +3,15 @@
 * Start Bootstrap - Creative v7.0.6 (https://startbootstrap.com/theme/creative)
 * Copyright 2013-2022 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
-*/ 
-
-.link {
-	color: #F77F00;
-	text-decoration: none;
-}
-
-.link:hover {
-	color: #D62828;
-}
-
-.btn-secondary:hover {
-	background-color: #D62828 !important;
-}
+*/
 
 .page-section {
-	padding: 5rem 0;
-}
-
-.text-white-75 {
-	color: rgba(255, 255, 255, 0.75) !important;
+	padding: 2rem 0;
 }
 
 #mainNav {
 	background-color: transparent;
 }
-
-.rating {
-	display: flex;
-	flex-direction: row-reverse;
-}
-
-.rating>input {
-	display: none;
-}
-
-.rating>label {
-	text-align: left;
-	font-size: 2vw;
-	color: #FFD600;
-	cursor: pointer;
-}
-
-.rating>label::before {
-	content: "\2605";
-	position: absolute;
-	opacity: 0;
-}
-
-.rating>label:hover:before,
-.rating>label:hover~label:before {
-	opacity: 1 !important;
-}
-
-.rating>input:checked~label:before {
-	opacity: 1;
-}
-
-.rating:hover>input:checked~label:before {
-	opacity: 0.4;
-}
-
 
 body {
 	background: #F77F00;

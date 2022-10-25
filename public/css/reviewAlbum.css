@@ -5,20 +5,6 @@
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
 */
 
-
-.link {
-  color: #F77F00;
-  text-decoration: none; 
-}
-
-.link:hover {
-  color: #D62828;
-}
-
-.btn-secondary:hover {
-  background-color: #D62828 !important;
-}
-
 .page-section {
   background-color: #fff;
   border-top-left-radius: 30px;
@@ -29,76 +15,12 @@
   text-align: center;
 }
 
-.text-white-75 {
-  color: rgba(255, 255, 255, 0.75) !important;
-}
-
 #mainNav {
   background-color: transparent;
-}  
-
-.rating {
-  display: flex;
-  flex-direction: row-reverse;
 }
-
-.rating > input{ display:none;}
-
-.rating > label {
-  text-align: left; 
-  font-size: 1.7rem;
-  color: #FFD600;
-  cursor: pointer;
-}
-.rating > label::before{ 
-  content: "\2605";
-  position: absolute;
-  opacity: 0;
-}
-.rating > label:hover:before,
-.rating > label:hover ~ label:before {
-  opacity: 1 !important;
-}
-
-.rating > input:checked ~ label:before{
-  opacity:1;
-}
-
-.rating:hover > input:checked ~ label:before{ opacity: 0.4; }
-
-.rating-small {
-  margin-left: -1rem;
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.rating-small > input{ display:none;}
-
-.rating-small > label {
-  text-align: left; 
-  font-size: 1.4rem;
-  color: #FFD600;
-  cursor: pointer;
-}
-.rating-small > label::before{ 
-  content: "\2605";
-  position: absolute;
-  opacity: 0;
-}
-.rating-small > label:hover:before,
-.rating-small > label:hover ~ label:before {
-  opacity: 1 !important;
-}
-
-.rating-small > input:checked ~ label:before{
-  opacity:1;
-}
-
-.rating-small:hover > input:checked ~ label:before{ opacity: 0.4; }
 
 body{
   background: linear-gradient(135deg, #FCBF49 0%, #F77F00 100%);
-	max-width: 99%;
 }
 
 .perfil-album{

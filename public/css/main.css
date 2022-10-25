@@ -17,12 +17,20 @@ p, .p, h6, .h6, h5, .h5, h4, .h4, h3, .h3 {
 	padding: 5rem 0;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+.btn-primary, .btn-primary:active, .btn-primary:visited {
 	background-color: #D62828 !important;
 }
 
-.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
+.btn-primary:hover {
 	background-color: #F77F00 !important;
+}
+
+.btn-secondary, .btn-secondary:active, .btn-secondary:visited {
+	background-color: #F77F00 !important;
+}
+
+.btn-secondary:hover {
+	background-color: #D62828 !important;
 }
 
 .btn-success, .btn-success:hover, .btn-success:active, .btn-success:visited {
@@ -38,7 +46,6 @@ p, .p, h6, .h6, h5, .h5, h4, .h4, h3, .h3 {
 	height: 100%;
 	object-fit: cover;
 	border-radius: 10%;
-
 }
 
 @media (max-width: 768px) {
@@ -121,8 +128,8 @@ p, .p, h6, .h6, h5, .h5, h4, .h4, h3, .h3 {
 
 .checked{
 	color: orange;
-  }
+}
   
-  .unchecked{
+.unchecked{
 	color: black;
-  }
+}

@@ -5,72 +5,6 @@
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
 */
 
-.collapse{
-  text-align: center;
-}
-
-.link {
-  color: #F77F00;
-  text-decoration: none; 
-}
-
-.link:hover {
-  color: #D62828;
-}
-
-.btn-secondary:hover {
-    background-color: #D62828 !important;
-  }
-
-.container-btn{
-  text-align: center;
-}
-
-.album-divider {
-  height: 0.2rem;
-  max-width: 3.25rem;
-  margin: 1.5rem auto;
-  background-color: #F77F00;
-  opacity: 1;
-}
-
-.divider
-{
-	position: relative;
-	height: 1px;
-}
-
-.div-transparent:before
-{
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 5%;
-	right: 5%;
-	width: 90%;
-	height: 1px;
-	background-image: linear-gradient(to right, transparent, #EAE2B7, transparent);
-}
-
-.div-arrow-down:after
-{
-	content: "";
-	position: absolute;
-	z-index: 1;
-	top: -7px;
-	left: calc(50% - 7px);
-	width: 14px;
-	height: 14px;
-	transform: rotate(45deg);
-	background-color: white;
-	border-bottom: 1px solid #EAE2B7;
-	border-right: 1px solid #EAE2B7;
-}
-
-.page-section {
-  padding: 4rem 0;
-}
-
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
@@ -101,31 +35,3 @@ header.masthead h1, header.masthead .h1 {
     font-size: 3.5rem;
   }
 }
-
-.rating {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
-.rating > input{ display:none;}
-
-.rating > label {
-    font-size: 1.6vw;
-    color: #FFD600;
-    cursor: pointer;
-}
-.rating > label::before{ 
-  content: "\2605";
-  position: absolute;
-  opacity: 0;
-}
-.rating > label:hover:before,
-.rating > label:hover ~ label:before {
-  opacity: 1 !important;
-}
-
-.rating > input:checked ~ label:before{
-  opacity:1;
-}
-
-.rating:hover > input:checked ~ label:before{ opacity: 0.4; }
