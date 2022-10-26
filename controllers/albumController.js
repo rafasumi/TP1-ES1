@@ -75,7 +75,7 @@ router.get('/:id',
         group: ['Ratings.albumId'],
       },
     );
-    if (!album) res.status(404).json('Álbum não encontrado').end();
+    if (!album) res.status(404).render('404', {erro: 'Álbum não encontrado.'});
     else {
       const artists = await Artist.findAll();
       const ratings = await Rating.findAll({where: {albumId: id}});

@@ -10,8 +10,8 @@ const validate = (validations) => {
     if (errors.isEmpty()) {
       return next();
     }
-
-    res.status(400).json({errors: errors.array()});
+    
+    res.render('400', {errors: errors.array()});
   };
 };
 

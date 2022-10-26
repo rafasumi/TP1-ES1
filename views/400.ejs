@@ -7,7 +7,7 @@
 	<!-- Arquivos CSS de estilização da página -->
 	<link rel="stylesheet" href="/css/404.css">
 
-	<title>Rate.io - Erro 404</title>
+	<title>Rate.io - Erro 400</title>
 </head>
 
 <body id="page-top">
@@ -15,13 +15,19 @@
 	<div class="container px-4 h-100 center">
 		<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
 			<div class="col-lg-8">
-				<h2 class="mb-2">Erro 404</h2>
-				<h5><%-erro-%></h5>
-				<a href="/" class="btn btn-secondary border-0 justify-content-center mt-3">Voltar para a página inicial</a>
+				<h2 class="mb-2">Erro 400</h2>
+					<% if(errors.length !== 0){ %>
+						<% errors.forEach(error => { %>
+							<h5><%-error.msg%></h5>
+						<% }) %>
+					<% } %>
+					<a href="/" class="btn btn-secondary border-0 justify-content-center mt-3">Voltar para a página inicial</a>
 			</div>
 		</div>
 	</div>
-	
+
+
+
 </body>
 
 </html>

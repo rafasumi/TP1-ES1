@@ -108,8 +108,7 @@ router.post('/update',
 router.post('/delete',
   async (req, res) => {
     const artist = await Artist.findByPk(req.body.id);
-    if (!artist) res.status(404).render(
-      '404', {erro: 'Artista não encontrado.'});
+    if (!artist) res.status(404).render('404', {erro: 'Artista não encontrado.'});
     else {
       await artist.destroy();
       res.redirect('/artist/all');
